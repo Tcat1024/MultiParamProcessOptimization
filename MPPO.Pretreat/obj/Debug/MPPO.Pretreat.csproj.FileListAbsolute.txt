@@ -1,0 +1,4 @@
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Pretreat\bin\Debug\MPPO.Pretreat.dll
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Pretreat\bin\Debug\MPPO.Pretreat.pdb
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Pretreat\obj\Debug\MPPO.Pretreat.dll
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Pretreat\obj\Debug\MPPO.Pretreat.pdb
