@@ -1,5 +1,11 @@
 C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Test\bin\Debug\MPPO.Test.exe
 C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Test\bin\Debug\MPPO.Test.pdb
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Test\bin\Debug\MPPO.Cluster.dll
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Test\bin\Debug\MPPO.Pretreat.dll
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Test\bin\Debug\MPPO.Protocol.dll
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Test\bin\Debug\MPPO.Cluster.pdb
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Test\bin\Debug\MPPO.Pretreat.pdb
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Test\bin\Debug\MPPO.Protocol.pdb
 C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Test\obj\Debug\MPPO.Test.csprojResolveAssemblyReference.cache
 C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Test\obj\Debug\MPPO.Test.Form1.resources
 C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Test\obj\Debug\MPPO.Test.Properties.Resources.resources
@@ -7,7 +13,3 @@ C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Test\
 C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Test\obj\Debug\MPPO.Test.exe.licenses
 C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Test\obj\Debug\MPPO.Test.exe
 C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Test\obj\Debug\MPPO.Test.pdb
-C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Test\bin\Debug\MPPO.Pretreat.dll
-C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Test\bin\Debug\MPPO.Pretreat.pdb
-C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Test\bin\Debug\MPPO.Cluster.dll
-C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Test\bin\Debug\MPPO.Cluster.pdb

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Diagnostics;
+using System.Data;
+using MPPO.Protocol.Operation;
 
 namespace MPPO.Pretreat
 {
@@ -20,8 +22,8 @@ namespace MPPO.Pretreat
             double[] sums = new double[paraCount];
             double[] avg = new double[paraCount];
             double[] sdv = new double[paraCount];
-            try
-            {
+            //try
+            //{
                 for (int i = 0; i < paraCount; i++)
                 {
                     for (int j = 0; j < dataCount; j++)
@@ -49,10 +51,47 @@ namespace MPPO.Pretreat
                         dataType.GetProperty(properties[i]).SetValue(temp, newValue, null);
                     }
                 }
-            }
-            catch (Exception ex)
+            //}
+            //catch (Exception ex)
+            //{
+            //    Trace.Assert(false, ex.Message);
+            //}
+        }
+        public static void Zscore(MPPO.Protocol.Interface.IDataTable data, string[] sparams,int datacount,int paracount,out double[,] result)
+        {
+            result = new double[datacount, paracount];
+            double[] sums = new double[paracount];
+            double[] avg = new double[paracount];
+            double[] sdv = new double[paracount];
+            int i, j;
+            for (i = 0; i < paracount; i++)
             {
-                Trace.Assert(false, ex.Message);
+                string sparam = sparams[i];
+                for (j = 0; j < datacount; j++)
+                {
+                    var temp = data[j];
+                    sums[i] += (temp as DataRow)[sparam].ConvertToDouble();
+                }
+                avg[i] = sums[i] / datacount;
+            }
+            for (i = 0; i < paracount; i++)
+            {
+                string sparam = sparams[i];
+                for (j = 0; j < datacount; j++)
+                {
+                    var temp = data[j];
+                    sdv[i] += Math.Pow(((temp as DataRow)[sparam].ConvertToDouble() - avg[i]), 2);
+                }
+                sdv[i] = Math.Pow(sdv[i] / datacount, 0.5);
+            }
+            for (i = 0; i < paracount; i++)
+            {
+                string sparam = sparams[i];
+                for (j = 0; j < datacount; j++)
+                {
+                    var temp = data[j];
+                    result[j, i] = ((temp as DataRow)[sparam].ConvertToDouble() - avg[i]) / sdv[i];
+                }
             }
         }
         public static void Zscore<T>(IList<T> data, IList<T> result, string[] properties)

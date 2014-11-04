@@ -1,0 +1,4 @@
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Data\bin\Debug\MPPO.Data.dll
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Data\bin\Debug\MPPO.Data.pdb
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Data\obj\Debug\MPPO.Data.dll
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Data\obj\Debug\MPPO.Data.pdb

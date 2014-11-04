@@ -43,6 +43,15 @@
     <Compile Include="MPPO.Pretreat.Standardization.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MPPO.Protocol\MPPO.Protocol.csproj">
+      <Project>{7075d3f7-880d-4e98-a996-5fb52023186c}</Project>
+      <Name>MPPO.Protocol</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
