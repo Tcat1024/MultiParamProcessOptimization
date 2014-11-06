@@ -11,7 +11,7 @@ using DevExpress.XtraEditors;
 
 namespace MPPO.UI
 {
-    public partial class MainForm : DevExpress.XtraEditors.XtraForm
+    public partial class MainForm : DevExpress.XtraEditors.XtraForm,MPPO.Protocol.Interface.IMainForm
     {
         public MainForm()
         {
@@ -26,7 +26,7 @@ namespace MPPO.UI
                 DataSet data;
                 try
                 {
-                    data = MPPO.Data.BasicOledbQuery.DebugGetTable(queryform.command, queryform.conStr,queryform.tablename);
+                    data = MPPO.Kernel.BusinessLogicOperation.DataAccessOperation.GetSingleTableFromDataBase(queryform.command, queryform.conStr, queryform.tablename);
                     MdiForm.MdiDataViewForm dataview = new MdiForm.MdiDataViewForm();
                     dataview.MdiParent = this;
                     dataview.DataSource = data;
@@ -51,13 +51,13 @@ namespace MPPO.UI
         }
         private void btnStandardData_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (this.ActiveMdiChild is MPPO.Protocol.Interface.IMdiDataForm)
+            if (this.ActiveMdiChild is MPPO.Protocol.Interface.IMdiDataForm<DataRow>)
             {
-                var targetform = (this.ActiveMdiChild as MPPO.Protocol.Interface.IMdiDataForm);
-                ConfigForm.DataStandardForm standardform = new ConfigForm.DataStandardForm(targetform.GetColumnsList(false,typeof(string),typeof(DateTime),typeof(bool)));
+                var targetform = (this.ActiveMdiChild as MPPO.Protocol.Interface.IMdiDataForm<DataRow>);
+                ConfigForm.DataStandardForm standardform = new ConfigForm.DataStandardForm(targetform.GetDataTable().GetColumnsList(false,typeof(string),typeof(DateTime),typeof(bool)));
                 if(standardform.ShowDialog()==DialogResult.OK)
                 {
-                    MPPO.Kernel.BusinessLogicOperation.DataOperation.DataStandard(targetform, standardform.GetInputColumns(), standardform.GetOutputColumns());        
+                    MPPO.Kernel.BusinessLogicOperation.DataProcessOperation.DataStandard(targetform, standardform.InputColumns, standardform.OutputColumns);        
                 }
             }
         }
@@ -90,14 +90,14 @@ namespace MPPO.UI
 
         private void btnCopyTable_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (this.ActiveMdiChild is MPPO.Protocol.Interface.IMdiDataForm)
+            if (this.ActiveMdiChild is MPPO.Protocol.Interface.IMdiDataForm<DataRow>)
             {
-                var sourceform = this.ActiveMdiChild as MPPO.Protocol.Interface.IMdiDataForm;
+                var sourceform = this.ActiveMdiChild as MPPO.Protocol.Interface.IMdiDataForm<DataRow>;
                 try
                 {
                     MdiForm.MdiDataViewForm dataview = new MdiForm.MdiDataViewForm();
                     dataview.MdiParent = this;
-                    dataview.DataSource = sourceform.GetDataCopy();
+                    dataview.DataSource = sourceform.GetDataTable().GetDataCopy();
                     dataview.Text = "WorkTable" + this.MdiChildren.Length + " - " + (dataview.DataSource as DataTable).TableName;
                     dataview.Show();
                 }
@@ -111,19 +111,82 @@ namespace MPPO.UI
 
         private void btnEntropy_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            if (this.ActiveMdiChild is MPPO.Protocol.Interface.IMdiDataForm)
+            if (this.ActiveMdiChild is MPPO.Protocol.Interface.IMdiDataForm<DataRow>)
             {
-                var targetform = (this.ActiveMdiChild as MPPO.Protocol.Interface.IMdiDataForm);
-                ConfigForm.EntropyForm entropuConfigform = new ConfigForm.EntropyForm(targetform.GetTableName(),targetform.GetColumnsList(false, typeof(string), typeof(DateTime), typeof(bool)));
-                if (entropuConfigform.ShowDialog() == DialogResult.OK)
+                var targetform = (this.ActiveMdiChild as MPPO.Protocol.Interface.IMdiDataForm<DataRow>);
+                var targettable = targetform.GetDataTable();
+                ConfigForm.AttributeSelectionForm Configform = new ConfigForm.AttributeSelectionForm(targettable.GetTableName(), targettable.GetColumnsList(false, typeof(string), typeof(DateTime), typeof(bool)));
+                Configform.Text += "_信息熵";
+                if (Configform.ShowDialog() == DialogResult.OK)
                 {
-                    MdiForm.MdiEntropyResultForm resultview = new MdiForm.MdiEntropyResultForm(targetform, entropuConfigform.SelectedColumns);
+                    MdiForm.MdiEntropyResultForm resultview = new MdiForm.MdiEntropyResultForm(targetform, Configform.SelectedColumns);
                     resultview.MdiParent = this;
-                    resultview.Text = "Entropy" + this.MdiChildren.Length + " - " + targetform.GetTableName();
+                    resultview.Text = "Entropy" + this.MdiChildren.Length + " - " + targettable.GetTableName();
                     resultview.Show();
                 }
             }
         }
+
+        private void btnKMeans_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (this.ActiveMdiChild is MPPO.Protocol.Interface.IMdiDataForm<DataRow>)
+            {
+                var targetform = (this.ActiveMdiChild as MPPO.Protocol.Interface.IMdiDataForm<DataRow>);
+                var targettable = targetform.GetDataTable();
+                ConfigForm.KMeansForm kMeansConfigform = new ConfigForm.KMeansForm(targettable.GetColumnsList(false, typeof(string), typeof(DateTime), typeof(bool)));
+                if (kMeansConfigform.ShowDialog() == DialogResult.OK)
+                {
+                    MdiForm.MdiKMeansResultForm resultview = new MdiForm.MdiKMeansResultForm(targetform, kMeansConfigform.SelectedColumns, kMeansConfigform.StartClustNum, kMeansConfigform.EndClustNum, kMeansConfigform.MaxCount, kMeansConfigform.Avg, kMeansConfigform.Stdev);
+                    resultview.MdiParent = this;
+                    resultview.Text = "KMeans" + this.MdiChildren.Length + " - " + targettable.GetTableName();
+                    resultview.Show();
+                }
+            }
+        }
+        public void ShowTime(double time)
+        {
+            this.stlCostTime.Caption = time + "秒";
+        }
+
+        private void btnSchmidtSelect_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (this.ActiveMdiChild is MPPO.Protocol.Interface.IMdiDataForm<DataRow>)
+            {
+                var targetform = (this.ActiveMdiChild as MPPO.Protocol.Interface.IMdiDataForm<DataRow>);
+                var targettable = targetform.GetDataTable();
+                ConfigForm.AttributeSelectionForm Configform = new ConfigForm.AttributeSelectionForm(targettable.GetTableName(), targettable.GetColumnsList(false, typeof(string), typeof(DateTime), typeof(bool)));
+                Configform.Text += "_施密特";
+                if (Configform.ShowDialog() == DialogResult.OK)
+                {
+                    MdiForm.MdiSchmidtResultForm resultview = new MdiForm.MdiSchmidtResultForm(targetform, Configform.SelectedColumns);
+                    resultview.MdiParent = this;
+                    resultview.Text = "Schmidt" + this.MdiChildren.Length + " - " + targettable.GetTableName();
+                    resultview.Show();
+                }
+            }
+        }
+
+        private void btnOpenTable_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            OpenFileDialog configform = new OpenFileDialog();
+            configform.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            configform.Filter = "Excel 工作簿(*.xlsx)|*.xlsx|Excel 97-2003 工作簿(*.xls)|*.xls";
+            configform.FilterIndex = 1;
+            configform.RestoreDirectory = true;
+            if (configform.ShowDialog() == DialogResult.OK)
+            {
+                DataSet data = MPPO.Kernel.BusinessLogicOperation.DataAccessOperation.GetTablesFromExcel(configform.FileName);
+                foreach(DataTable table in data.Tables)
+                {
+                    MdiForm.MdiDataViewForm dataview = new MdiForm.MdiDataViewForm();
+                    dataview.MdiParent = this;
+                    dataview.DataSource = table;
+                    dataview.Text = "WorkTable" + this.MdiChildren.Length + " - " + table.TableName;
+                    dataview.Show();
+                }
+            }
+        }
+
 
 
     }

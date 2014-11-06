@@ -11,7 +11,7 @@ namespace MPPO.Protocol.Operation
         {
             if (o is DBNull)
                 return 0;
-            else
+            else 
                 return Convert.ToDouble(o);
         }
     }

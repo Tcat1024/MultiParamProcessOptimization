@@ -7,24 +7,40 @@ using System.Text;
 using System.Linq;
 using System.Windows.Forms;
 using DevExpress.XtraEditors;
+using System.Threading;
 
 namespace MPPO.UI.MdiForm
 {
     public partial class MdiEntropyResultForm : DevExpress.XtraEditors.XtraForm
     {
-        private MPPO.Protocol.Interface.IMdiDataForm dataForm;
+        private MPPO.Protocol.Interface.IMdiDataForm<DataRow> dataForm;
+        private MPPO.Protocol.Interface.IDataTable<DataRow> dataTable;
         private List<string> selectedColumns;
-        public MdiEntropyResultForm(MPPO.Protocol.Interface.IMdiDataForm dataform,List<string> selectedcolumns)
+        private double costTime;
+        private List<Tuple<string, double>> result;
+        public MdiEntropyResultForm(MPPO.Protocol.Interface.IMdiDataForm<DataRow> dataform, List<string> selectedcolumns)
         {
             InitializeComponent();
             this.dataForm = dataform;
+            this.dataTable = dataform.GetDataTable();
             this.selectedColumns = selectedcolumns;
         }
 
         private void MdiEntropyResultForm_Load(object sender, EventArgs e)
         {
-            List<Tuple<string, double>> result;
-            MPPO.Kernel.BusinessLogicOperation.DataMiningOperation.Entropy(dataForm.GetDataTable(), selectedColumns, out result);
+            this.LoadingControl.Visible = true;
+            new Thread(doMethod) { IsBackground = true}.Start();        
+        }
+        private void doMethod()
+        {
+            DateTime starttime = DateTime.Now;
+            MPPO.Kernel.BusinessLogicOperation.DataProcessOperation.Entropy(this.dataTable, selectedColumns, out result); 
+            DateTime endtime = DateTime.Now;
+            this.costTime = (endtime - starttime).TotalSeconds;
+            this.Invoke(new Action(showResult));
+        }
+        private void showResult()
+        {
             this.advChartControl1.Series[0].Points.BeginUpdate();
             this.checkedListBoxControl1.Items.BeginUpdate();
             this.checkedListBoxControl1.Items.Clear();
@@ -32,21 +48,29 @@ namespace MPPO.UI.MdiForm
             foreach (var r in result)
             {
                 this.advChartControl1.Series[0].Points.Add(new DevExpress.XtraCharts.SeriesPoint(r.Item1, r.Item2));
-                this.checkedListBoxControl1.Items.Insert(0,new DevExpress.XtraEditors.Controls.CheckedListBoxItem(r.Item1,false));
+                this.checkedListBoxControl1.Items.Insert(0, new DevExpress.XtraEditors.Controls.CheckedListBoxItem(r.Item1, false));
             }
             this.advChartControl1.Series[0].Points.EndUpdate();
             this.checkedListBoxControl1.Items.EndUpdate();
+            this.LoadingControl.Visible = false;
+            var mainform = this.Parent as MPPO.Protocol.Interface.IMainForm;
+            if (mainform != null)
+                mainform.ShowTime(this.costTime);
         }
-
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             int i = 0;
             foreach(DevExpress.XtraEditors.Controls.CheckedListBoxItem r in this.checkedListBoxControl1.Items)
             {
-                if (r.CheckState == CheckState.Checked && this.dataForm.SetColumnUnvisible(r.Value.ToString()))
+                if (r.CheckState == CheckState.Checked && this.dataTable.SetColumnUnvisible(r.Value.ToString()))
                     i++;                    ;
             }
             MessageBox.Show("成功更改了"+i+"列");
+        }
+
+        private void MdiEntropyResultForm_Resize(object sender, EventArgs e)
+        {
+            this.LoadingControl.Location = new Point((this.Width - this.LoadingControl.Width) / 2, (this.Height - this.LoadingControl.Height) / 2);
         }
 
 

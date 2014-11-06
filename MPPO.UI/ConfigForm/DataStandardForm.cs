@@ -13,8 +13,8 @@ namespace MPPO.UI.ConfigForm
     public partial class DataStandardForm : DevExpress.XtraEditors.XtraForm
     {
         private string[] originalColumns;
-        private string[] inputColumns;
-        private string[] outputColumns;
+        public string[] InputColumns { get; private set; }
+        public string[] OutputColumns { get; private set; }
         public DataStandardForm(string[] columns)
         {
             InitializeComponent();
@@ -25,15 +25,15 @@ namespace MPPO.UI.ConfigForm
         private void simpleButton3_Click(object sender, EventArgs e)
         {
             int count = this.listBoxControl2.Items.Count;
-            inputColumns = new string[count];
-            for(int i = 0;i<count;i++)
+            InputColumns = new string[count];
+            for (int i = 0; i < count; i++)
             {
-                inputColumns[i] = this.listBoxControl2.Items[i].ToString();
+                InputColumns[i] = this.listBoxControl2.Items[i].ToString();
             }
-            outputColumns = new string[count];
-            for(int i = 0;i<count;i++)
+            OutputColumns = new string[count];
+            for (int i = 0; i < count; i++)
             {
-                outputColumns[i] = this.listBoxControl3.Items[i].ToString();
+                OutputColumns[i] = this.listBoxControl3.Items[i].ToString();
             }
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
@@ -45,7 +45,7 @@ namespace MPPO.UI.ConfigForm
 
         private void simpleButton1_Click(object sender, EventArgs e)
         {
-            foreach(var col in this.listBoxControl1.SelectedItems)
+            foreach (var col in this.listBoxControl1.SelectedItems)
             {
                 if (!this.listBoxControl2.Items.Contains(col) && this.originalColumns.Contains(col.ToString()))
                     this.listBoxControl2.Items.Add(col);
@@ -65,7 +65,7 @@ namespace MPPO.UI.ConfigForm
 
         private void buttonEdit1_ButtonClick(object sender, DevExpress.XtraEditors.Controls.ButtonPressedEventArgs e)
         {
-            string text= (sender as DevExpress.XtraEditors.ButtonEdit).Text.Trim();
+            string text = (sender as DevExpress.XtraEditors.ButtonEdit).Text.Trim();
             if (text != "" && !this.listBoxControl1.Items.Contains(text))
             {
                 if (this.listBoxControl1.SelectedItem != null)
@@ -73,22 +73,14 @@ namespace MPPO.UI.ConfigForm
                 else
                     this.listBoxControl1.Items.Add(text);
             }
-                
-        }
-        public string[] GetInputColumns()
-        {
-            return this.inputColumns;
-        }
-        public string[] GetOutputColumns()
-        {
-            return this.outputColumns;
+
         }
 
         private void simpleButton5_Click(object sender, EventArgs e)
         {
             var selectitems = this.listBoxControl2.SelectedItems;
             int count = selectitems.Count;
-            for (int i = count - 1; i >= 0;i-- )
+            for (int i = count - 1; i >= 0; i--)
             {
                 this.listBoxControl2.Items.Remove(selectitems[i]);
             }
@@ -97,8 +89,8 @@ namespace MPPO.UI.ConfigForm
         private void checkValidate()
         {
             bool b = false;
-            if(this.listBoxControl2.Items.Count!=this.listBoxControl3.Items.Count)
-                b=true;
+            if (this.listBoxControl2.Items.Count != this.listBoxControl3.Items.Count)
+                b = true;
             this.labelControl5.Visible = b;
             this.simpleButton3.Enabled = !b;
         }
@@ -115,7 +107,7 @@ namespace MPPO.UI.ConfigForm
 
         private void listBoxControl1_KeyDown(object sender, KeyEventArgs e)
         {
-            if(e.Control&&e.KeyCode==Keys.C)
+            if (e.Control && e.KeyCode == Keys.C)
             {
                 Clipboard.SetText((sender as DevExpress.XtraEditors.ListBoxControl).SelectedItem.ToString());
             }

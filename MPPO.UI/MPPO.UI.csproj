@@ -92,11 +92,17 @@
     <Compile Include="ConfigForm\DebugDataSelectForm.designer.cs">
       <DependentUpon>DebugDataSelectForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ConfigForm\EntropyForm.cs">
+    <Compile Include="ConfigForm\AttributeSelectionForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="ConfigForm\EntropyForm.Designer.cs">
-      <DependentUpon>EntropyForm.cs</DependentUpon>
+    <Compile Include="ConfigForm\AttributeSelectionForm.Designer.cs">
+      <DependentUpon>AttributeSelectionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ConfigForm\KMeansForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigForm\KMeansForm.Designer.cs">
+      <DependentUpon>KMeansForm.cs</DependentUpon>
     </Compile>
     <Compile Include="DataStructure.cs" />
     <Compile Include="MainForm.cs">
@@ -111,11 +117,23 @@
     <Compile Include="MdiForm\MdiDataViewForm.Designer.cs">
       <DependentUpon>MdiDataViewForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="MdiForm\MdiSchmidtResultForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MdiForm\MdiSchmidtResultForm.Designer.cs">
+      <DependentUpon>MdiSchmidtResultForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MdiForm\MdiEntropyResultForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MdiForm\MdiEntropyResultForm.Designer.cs">
       <DependentUpon>MdiEntropyResultForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MdiForm\MdiKMeansResultForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MdiForm\MdiKMeansResultForm.Designer.cs">
+      <DependentUpon>MdiKMeansResultForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -125,8 +143,11 @@
     <EmbeddedResource Include="ConfigForm\DebugDataSelectForm.resx">
       <DependentUpon>DebugDataSelectForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="ConfigForm\EntropyForm.resx">
-      <DependentUpon>EntropyForm.cs</DependentUpon>
+    <EmbeddedResource Include="ConfigForm\AttributeSelectionForm.resx">
+      <DependentUpon>AttributeSelectionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigForm\KMeansForm.resx">
+      <DependentUpon>KMeansForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -134,8 +155,14 @@
     <EmbeddedResource Include="MdiForm\MdiDataViewForm.resx">
       <DependentUpon>MdiDataViewForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="MdiForm\MdiSchmidtResultForm.resx">
+      <DependentUpon>MdiSchmidtResultForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MdiForm\MdiEntropyResultForm.resx">
       <DependentUpon>MdiEntropyResultForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MdiForm\MdiKMeansResultForm.resx">
+      <DependentUpon>MdiKMeansResultForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -158,10 +185,6 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MPPO.Data\MPPO.Data.csproj">
-      <Project>{13e97943-a7f6-4c2c-ba78-39d5070c5c51}</Project>
-      <Name>MPPO.Data</Name>
-    </ProjectReference>
     <ProjectReference Include="..\MPPO.Kernel\MPPO.Kernel.csproj">
       <Project>{36803752-b9db-4f35-a397-ed1be456077e}</Project>
       <Name>MPPO.Kernel</Name>

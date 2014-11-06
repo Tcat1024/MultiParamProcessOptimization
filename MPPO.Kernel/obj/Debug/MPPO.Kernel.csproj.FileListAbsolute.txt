@@ -1,9 +1,0 @@
-C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Kernel\bin\Debug\MPPO.Kernel.dll
-C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Kernel\bin\Debug\MPPO.Kernel.pdb
-C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Kernel\bin\Debug\MPPO.Pretreat.dll
-C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Kernel\bin\Debug\MPPO.Protocol.dll
-C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Kernel\bin\Debug\MPPO.Pretreat.pdb
-C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Kernel\bin\Debug\MPPO.Protocol.pdb
-C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Kernel\obj\Debug\MPPO.Kernel.csprojResolveAssemblyReference.cache
-C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Kernel\obj\Debug\MPPO.Kernel.dll
-C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Kernel\obj\Debug\MPPO.Kernel.pdb

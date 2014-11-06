@@ -41,14 +41,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BusinessLogicOperation\DataAccessOperation.cs" />
     <Compile Include="BusinessLogicOperation\DataMiningOperation.cs" />
-    <Compile Include="BusinessLogicOperation\DataOperation.cs" />
+    <Compile Include="BusinessLogicOperation\DataProcessOperation.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\MPPO.Pretreat\MPPO.Pretreat.csproj">
+    <ProjectReference Include="..\MPPO.DataAccess\MPPO.DataAccess.csproj">
+      <Project>{13e97943-a7f6-4c2c-ba78-39d5070c5c51}</Project>
+      <Name>MPPO.DataAccess</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MPPO.DataMining\MPPO.DataMining.csproj">
+      <Project>{7d72339e-9266-4be5-b3d1-48216f951daf}</Project>
+      <Name>MPPO.DataMining</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MPPO.DataProcess\MPPO.DataProcess.csproj">
       <Project>{fe6957c3-5774-4c0d-9b88-52b1966708be}</Project>
-      <Name>MPPO.Pretreat</Name>
+      <Name>MPPO.DataProcess</Name>
     </ProjectReference>
     <ProjectReference Include="..\MPPO.Protocol\MPPO.Protocol.csproj">
       <Project>{7075d3f7-880d-4e98-a996-5fb52023186c}</Project>

@@ -8,7 +8,6 @@ using System.Text;
 using System.Windows.Forms;
 using System.Text.RegularExpressions;
 using System.Data.OleDb;
-using MPPO.Data;
 
 namespace MPPO.UI.ConfigForm
 {
@@ -86,7 +85,7 @@ namespace MPPO.UI.ConfigForm
         {
             try
             {
-                tableNames = MPPO.Data.BasicOledbQuery.GetTableNames(this.textEdit1.Text);
+                tableNames = MPPO.Kernel.BusinessLogicOperation.DataAccessOperation.GetTableNamesFromDataBase(this.textEdit1.Text);
                 columnNames = new List<string>[tableNames.Count];
                 return true;
             }
@@ -124,7 +123,7 @@ namespace MPPO.UI.ConfigForm
             try
             {
                 columnNames[index] = new List<string>();
-                columnNames[index] = MPPO.Data.BasicOledbQuery.GetColumnNames(this.conStr, this.tableNames[index]);
+                columnNames[index] = MPPO.Kernel.BusinessLogicOperation.DataAccessOperation.GetColumnNamesFromDataBase(this.conStr, this.tableNames[index]);
                 return true;
             }
             catch (Exception ex)

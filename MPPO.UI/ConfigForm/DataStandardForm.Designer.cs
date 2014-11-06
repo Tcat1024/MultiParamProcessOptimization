@@ -63,6 +63,7 @@
             // 
             this.listBoxControl1.Location = new System.Drawing.Point(12, 12);
             this.listBoxControl1.Name = "listBoxControl1";
+            this.listBoxControl1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBoxControl1.Size = new System.Drawing.Size(161, 246);
             this.listBoxControl1.TabIndex = 0;
             this.listBoxControl1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.listBoxControl1_KeyDown);
@@ -206,6 +207,7 @@
             // 
             this.listBoxControl2.Location = new System.Drawing.Point(243, 36);
             this.listBoxControl2.Name = "listBoxControl2";
+            this.listBoxControl2.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBoxControl2.Size = new System.Drawing.Size(161, 95);
             this.listBoxControl2.TabIndex = 56;
             // 
@@ -213,6 +215,7 @@
             // 
             this.listBoxControl3.Location = new System.Drawing.Point(243, 187);
             this.listBoxControl3.Name = "listBoxControl3";
+            this.listBoxControl3.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.listBoxControl3.Size = new System.Drawing.Size(161, 95);
             this.listBoxControl3.TabIndex = 57;
             // 

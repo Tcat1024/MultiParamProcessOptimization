@@ -40,10 +40,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Interface\DataBaseInterface.cs" />
     <Compile Include="Interface\FormTypeInterface.cs" />
     <Compile Include="Operation\DataConvertExtern.cs" />
+    <Compile Include="Operation\StatisticsExtern.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

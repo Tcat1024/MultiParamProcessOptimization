@@ -1,0 +1,7 @@
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Pretreat\bin\Debug\MPPO.DataProcess.dll
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Pretreat\bin\Debug\MPPO.DataProcess.pdb
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Pretreat\bin\Debug\MPPO.Protocol.dll
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Pretreat\bin\Debug\MPPO.Protocol.pdb
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Pretreat\obj\Debug\MPPO.DataProcess.csprojResolveAssemblyReference.cache
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Pretreat\obj\Debug\MPPO.DataProcess.dll
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Pretreat\obj\Debug\MPPO.DataProcess.pdb
