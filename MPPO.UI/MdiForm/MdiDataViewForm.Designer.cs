@@ -33,6 +33,7 @@
             this.mainGridControl = new DevExpress.XtraGrid.GridControl();
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
             this.mainGridView = new SPC.Base.Control.CanChooseDataGridView();
+            this.loadingControl1 = new MPPO.UI.Control.LoadingControl();
             ((System.ComponentModel.ISupportInitialize)(this.mainGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainGridView)).BeginInit();
@@ -57,7 +58,7 @@
             this.mainGridControl.Location = new System.Drawing.Point(0, 0);
             this.mainGridControl.MainView = this.mainGridView;
             this.mainGridControl.Name = "mainGridControl";
-            this.mainGridControl.Size = new System.Drawing.Size(864, 469);
+            this.mainGridControl.Size = new System.Drawing.Size(874, 458);
             this.mainGridControl.TabIndex = 0;
             this.mainGridControl.UseEmbeddedNavigator = true;
             this.mainGridControl.ViewCollection.AddRange(new DevExpress.XtraGrid.Views.Base.BaseView[] {
@@ -87,15 +88,31 @@
             this.mainGridView.OptionsView.ColumnAutoWidth = false;
             this.mainGridView.OptionsView.ShowFooter = true;
             // 
+            // loadingControl1
+            // 
+            this.loadingControl1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.loadingControl1.Location = new System.Drawing.Point(292, 164);
+            this.loadingControl1.Margin = new System.Windows.Forms.Padding(0);
+            this.loadingControl1.Name = "loadingControl1";
+            this.loadingControl1.Position = 0;
+            this.loadingControl1.ProgressBarVisible = true;
+            this.loadingControl1.Size = new System.Drawing.Size(291, 130);
+            this.loadingControl1.TabIndex = 1;
+            this.loadingControl1.Visible = false;
+            this.loadingControl1.WaitText = "Please Wait, Loading ...";
+            // 
             // MdiDataViewForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(864, 469);
+            this.ClientSize = new System.Drawing.Size(874, 458);
+            this.Controls.Add(this.loadingControl1);
             this.Controls.Add(this.mainGridControl);
             this.Name = "MdiDataViewForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MdiDataViewForm";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MdiDataViewForm_FormClosing);
+            this.Resize += new System.EventHandler(this.MdiDataViewForm_Resize);
             ((System.ComponentModel.ISupportInitialize)(this.mainGridControl)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.mainGridView)).EndInit();
@@ -108,5 +125,6 @@
         private DevExpress.XtraGrid.GridControl mainGridControl;
         private SPC.Base.Control.CanChooseDataGridView mainGridView;
         private DevExpress.Utils.ImageCollection imageCollection1;
+        private Control.LoadingControl loadingControl1;
     }
 }

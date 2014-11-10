@@ -11,72 +11,71 @@ using System.Threading;
 
 namespace MPPO.UI.MdiForm
 {
-    public partial class MdiEntropyResultForm : DevExpress.XtraEditors.XtraForm
+    public partial class MdiEntropyResultForm : DevExpress.XtraEditors.XtraForm,MPPO.Protocol.Interface.IMdiResultForm
     {
-        private MPPO.Protocol.Interface.IMdiDataForm<DataRow> dataForm;
-        private MPPO.Protocol.Interface.IDataTable<DataRow> dataTable;
-        private List<string> selectedColumns;
-        private double costTime;
-        private List<Tuple<string, double>> result;
-        public MdiEntropyResultForm(MPPO.Protocol.Interface.IMdiDataForm<DataRow> dataform, List<string> selectedcolumns)
+        public List<Tuple<string, double>> Result;
+        public int MdiIndex { get; set; }
+        private string _Caption;
+        public string Caption
+        {
+            get
+            {
+                return this._Caption;
+            }
+            set
+            {
+                this._Caption = value;
+                this.Text = "Entropy" + MdiIndex + " - " + value;
+            }
+        }
+        public MPPO.Protocol.Interface.IMdiDataForm<DataRow> DataForm { get; set; }
+        public MdiEntropyResultForm(MPPO.Protocol.Interface.IMdiDataForm<DataRow> dataform)
         {
             InitializeComponent();
-            this.dataForm = dataform;
-            this.dataTable = dataform.GetDataTable();
-            this.selectedColumns = selectedcolumns;
+            this.DataForm = dataform;
+            this.MdiParent = dataform.MdiParent;
+            this.MdiIndex = dataform.MdiIndex;
+            this.Caption = dataform.Caption;
         }
-
-        private void MdiEntropyResultForm_Load(object sender, EventArgs e)
-        {
-            this.LoadingControl.Visible = true;
-            new Thread(doMethod) { IsBackground = true}.Start();        
-        }
-        private void doMethod()
-        {
-            DateTime starttime = DateTime.Now;
-            MPPO.Kernel.BusinessLogicOperation.DataProcessOperation.Entropy(this.dataTable, selectedColumns, out result); 
-            DateTime endtime = DateTime.Now;
-            this.costTime = (endtime - starttime).TotalSeconds;
-            this.Invoke(new Action(showResult));
-        }
-        private void showResult()
+        public void ShowResult()
         {
             this.advChartControl1.Series[0].Points.BeginUpdate();
             this.checkedListBoxControl1.Items.BeginUpdate();
             this.checkedListBoxControl1.Items.Clear();
             this.advChartControl1.Series[0].Points.Clear();
-            foreach (var r in result)
+            foreach (var r in Result)
             {
                 this.advChartControl1.Series[0].Points.Add(new DevExpress.XtraCharts.SeriesPoint(r.Item1, r.Item2));
                 this.checkedListBoxControl1.Items.Insert(0, new DevExpress.XtraEditors.Controls.CheckedListBoxItem(r.Item1, false));
             }
             this.advChartControl1.Series[0].Points.EndUpdate();
             this.checkedListBoxControl1.Items.EndUpdate();
-            this.LoadingControl.Visible = false;
-            var mainform = this.Parent as MPPO.Protocol.Interface.IMainForm;
-            if (mainform != null)
-                mainform.ShowTime(this.costTime);
         }
         private void simpleButton1_Click(object sender, EventArgs e)
         {
             int i = 0;
             foreach(DevExpress.XtraEditors.Controls.CheckedListBoxItem r in this.checkedListBoxControl1.Items)
             {
-                if (r.CheckState == CheckState.Checked && this.dataTable.SetColumnUnvisible(r.Value.ToString()))
+                if (r.CheckState == CheckState.Checked && this.DataForm.GetDataTable().SetColumnUnvisible(r.Value.ToString()))
                     i++;                    ;
             }
             MessageBox.Show("成功更改了"+i+"列");
         }
 
-        private void MdiEntropyResultForm_Resize(object sender, EventArgs e)
+        private void advChartControl1_MouseClick(object sender, MouseEventArgs e)
         {
-            this.LoadingControl.Location = new Point((this.Width - this.LoadingControl.Width) / 2, (this.Height - this.LoadingControl.Height) / 2);
+            var targetcontrol =sender as DevExpress.XtraCharts.ChartControl;
+            if(targetcontrol!=null)
+            {
+                var hitinfo = (targetcontrol.Diagram as DevExpress.XtraCharts.XYDiagram2D).PointToDiagram(e.Location);
+                if(hitinfo!=null&&hitinfo.QualitativeArgument!=null)
+                {
+                    int index = this.checkedListBoxControl1.Items.IndexOf(hitinfo.QualitativeArgument);
+                    if (index >= 0)
+                        this.checkedListBoxControl1.SelectedIndex = index;
+                }
+            }
         }
-
-
-
-
-
 
     }
 }

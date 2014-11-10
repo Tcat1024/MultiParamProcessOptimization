@@ -7,9 +7,11 @@ namespace MPPO.Protocol.Interface
 {
     public interface IDataTable<T>
     {
+        string Name { get; set; }
+        int RowCount { get; }
+        int ColumnCount { get; }
         T this[int index] { get;}
         object[] GetGroup(int index);
-        int Count();
         T NewRow();
         int GetSourceIndex(int i);
         T GetSourceRowbySourceIndex(int i);
@@ -22,7 +24,6 @@ namespace MPPO.Protocol.Interface
         void AddColumn(string name, Type datatype);
         bool SetColumnVisible(string name);
         bool SetColumnUnvisible(string name);
-        object GetDataCopy();
-        string GetTableName();
+        object Copy();
     }
 }

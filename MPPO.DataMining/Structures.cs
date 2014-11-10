@@ -24,6 +24,7 @@ namespace MPPO.DataMining
         public int[] ClassNumbers { get; set; }
         public int[] CountEachCluster { get; set; }
         public string[] Properties { get; set; }
+        public int LoopCount { get; set; }
         public double CostTime { get; set; }
     }
     public class ClusterAssessReport_BWP

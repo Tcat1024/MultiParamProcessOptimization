@@ -97,6 +97,7 @@
             this.Controls.Add(this.simpleButton1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "AttributeSelectionForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "属性选择";
             this.ResumeLayout(false);

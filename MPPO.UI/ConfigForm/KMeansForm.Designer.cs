@@ -273,6 +273,7 @@
             this.Controls.Add(this.listBoxControl1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "KMeansForm";
+            this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "K均值聚类";
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).EndInit();

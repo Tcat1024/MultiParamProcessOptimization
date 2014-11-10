@@ -87,7 +87,7 @@ namespace MPPO.DataMining
         public static ClusterAssessReport_BWP GetBWP(IDataTable<DataRow> data, ClusterResult result)
         {
             int cCount = result.cCount;
-            int dataCount = data.Count();
+            int dataCount = data.RowCount;
             int paraCount = result.Properties.Length;
             var classnumber = result.ClassNumbers;
             var properties = result.Properties;
@@ -105,18 +105,18 @@ namespace MPPO.DataMining
                     int cj = classnumber[j];
                     int ci = classnumber[i];
                     double temp = GetEdistence(data[i], data[j], properties, paraCount,data);
-                    int tempcount = eachClusterCount[cj];
+                    int tempcountj = eachClusterCount[cj];
+                    int tempcounti = eachClusterCount[ci];
                     if (ci == cj)
                     {
-                        temp = temp / (tempcount - 1);
+                        temp = temp / (tempcountj - 1);
                         w[i] += temp;
                         w[j] += temp;
                     }
                     else
                     {
-                        temp = temp / tempcount;
-                        bc[i, cj] += temp;
-                        bc[j, ci] += temp;
+                        bc[i, cj] += temp / tempcountj;
+                        bc[j, ci] += temp / tempcounti;
                     }
                 }
             }

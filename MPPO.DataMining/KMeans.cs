@@ -71,7 +71,7 @@ namespace MPPO.DataMining
             DateTime starttime = DateTime.Now;
             ClusterReport<T> finalreport = new ClusterReport<T>();
             Barrier barr = new Barrier(MaxClusterCount - MinClusterCount + 2);
-            ThreadFactory<T> factory = new ThreadFactory<T>(finalreport, data, properties, maxCount, mean, v,barr);
+            ParralFactory<T> factory = new ParralFactory<T>(finalreport, data, properties, maxCount, mean, v,barr);
             for (int i = MinClusterCount; i <= MaxClusterCount; i++)
             {
                 Thread thd = new Thread(factory.StartThread);
@@ -84,7 +84,7 @@ namespace MPPO.DataMining
             finalreport.TotalCostTime = (endtime - starttime).TotalMilliseconds;
             return finalreport;
         }
-        private class ThreadFactory<T> where T : new()
+        private class ParralFactory<T> where T : new()
         {
             private double score = Double.NegativeInfinity;
             public int maxIndex = -1;
@@ -96,7 +96,7 @@ namespace MPPO.DataMining
             private double[] mean;
             private double[] v;
             private Barrier barr;
-            public ThreadFactory(ClusterReport<T> finalreport, IList<T> data,string[] properties,int maxCount,double[] mean,double[] v,Barrier barr)
+            public ParralFactory(ClusterReport<T> finalreport, IList<T> data,string[] properties,int maxCount,double[] mean,double[] v,Barrier barr)
             {
                 this.finalreport = finalreport;
                 this.data = data;
@@ -301,22 +301,40 @@ namespace MPPO.DataMining
                 w[i] = cj[i] / cjSum;
             }
         }
-        public static ClusterReport AutoParallelStart(IDataTable<DataRow> data, string[] properties, int maxCount, int MinClusterCount, int MaxClusterCount, double[] mean, double[] v,object[] flags)
+
+
+        /// <summary>
+        /// 并行开始K均值聚类
+        /// </summary>
+        /// <param name="data">数据源</param>
+        /// <param name="properties"> 聚类列集合</param>
+        /// <param name="maxCount">单次聚类最大循环数</param>
+        /// <param name="MinClusterCount">最小聚类数</param>
+        /// <param name="MaxClusterCount">最大聚类数</param>
+        /// <param name="mean">各列平均数</param>
+        /// <param name="v">各列标准差</param>
+        /// <param name="flags">用以查看当前进度</param>
+        /// <param name="quick">是否采用快速聚类</param>
+        /// <returns>聚类结果报告</returns>
+        public static ClusterReport AutoParallelStart(IDataTable<DataRow> data, string[] properties, int maxCount, int MinClusterCount, int MaxClusterCount, double[] mean, double[] v, Protocol.Structure.WaitObject wt, int methodid)
         {
             DateTime starttime = DateTime.Now;
             ClusterReport finalreport = new ClusterReport();
             int threadcount = 15;
-            if (MaxClusterCount - MinClusterCount + 1 < 15)
-                threadcount = MaxClusterCount - MinClusterCount + 1;
-            Barrier barr = new Barrier(threadcount+1);
-            ThreadFactory factory = new ThreadFactory(finalreport, data, properties, maxCount, mean, v,barr);
-            for (int i = 0; i < threadcount;i++ )
+            int clustercount = MaxClusterCount - MinClusterCount + 1;
+            if (clustercount < 15)
+                threadcount = clustercount;
+            Barrier barr = new Barrier(threadcount + 1);
+            ParralFactory factory = new ParralFactory(finalreport, data, properties, maxCount, mean, v, barr);
+            wt.Flags = new int[clustercount];
+            wt.Max = clustercount * maxCount;
+            for (int i = 0; i < threadcount; i++)
             {
                 int num = i;
                 new Thread((k) =>
                 {
-                    factory.StartThread(MinClusterCount + (int)k * (MaxClusterCount - MinClusterCount + 1) / threadcount, MinClusterCount + ((int)k + 1) * (MaxClusterCount - MinClusterCount + 1) / threadcount, flags, MinClusterCount);   
-                }) { IsBackground = true}.Start(num);
+                    factory.Start(MinClusterCount + (int)k * clustercount / threadcount, MinClusterCount + ((int)k + 1) * clustercount / threadcount, wt.Flags, MinClusterCount, methodid);
+                }) { IsBackground = true }.Start(num);
             }
             barr.SignalAndWait();
             finalreport.FanialResult = finalreport.HisResult[factory.maxIndex];
@@ -325,7 +343,7 @@ namespace MPPO.DataMining
             finalreport.TotalCostTime = (endtime - starttime).TotalMilliseconds;
             return finalreport;
         }
-        private class ThreadFactory
+        private class ParralFactory
         {
             private double score = Double.NegativeInfinity;
             public int maxIndex = -1;
@@ -337,7 +355,7 @@ namespace MPPO.DataMining
             private double[] mean;
             private double[] v;
             private Barrier barr;
-            public ThreadFactory(ClusterReport finalreport, IDataTable<DataRow> data, string[] properties, int maxCount, double[] mean, double[] v, Barrier barr = null)
+            public ParralFactory(ClusterReport finalreport, IDataTable<DataRow> data, string[] properties, int maxCount, double[] mean, double[] v, Barrier barr = null)
             {
                 this.finalreport = finalreport;
                 this.data = data;
@@ -347,12 +365,17 @@ namespace MPPO.DataMining
                 this.v = v;
                 this.barr = barr;
             }
-            public void StartThread(int start, int end, object[] flags,int min)
+            public void Start(int start, int end, int[] flags, int min, int methodid)
             {
-                for (int i = start; i <end; i++)
+                for (int i = start; i < end; i++)
                 {
                     int cCount = i;
-                    ClusterResult clusterresult = Start(this.data, this.properties, cCount, this.maxCount, this.mean, this.v,ref flags[i-min]);
+                    ClusterResult clusterresult = null;
+                    switch(methodid)
+                    {
+                        case 0:clusterresult = SingleStart(this.data, this.properties, cCount, this.maxCount, this.mean, this.v, ref flags[i - min]);break;
+                        case 1:clusterresult = SingleImproveStart(this.data, this.properties, cCount, this.maxCount, this.mean, this.v, ref flags[i - min]);break;
+                    }
                     ClusterAssessReport_BWP clusterassessreport = Assess.GetBWP(this.data, clusterresult);
                     lock (this.SyObject)
                     {
@@ -369,13 +392,13 @@ namespace MPPO.DataMining
                     this.barr.RemoveParticipant();
             }
         }
-        public static ClusterResult Start(IDataTable<DataRow> data, string[] properties, int cCount, int maxCount, double[] mean, double[] v,ref object flag)
+        public static ClusterResult SingleImproveStart(IDataTable<DataRow> data, string[] properties, int cCount, int maxCount, double[] mean, double[] v,ref int flag)
         {
             DateTime starttime = DateTime.Now;
             int paraCount = properties.Length;
             if (data == null || properties == null || cCount < 2 || paraCount != mean.Length || paraCount != v.Length)
                 return null;
-            int dataCount = data.Count();
+            int dataCount = data.RowCount;
             if (paraCount == 0 || dataCount == 0)
                 return null;
             var result = new ClusterResult();
@@ -430,9 +453,9 @@ namespace MPPO.DataMining
                 count++;
                 if (count >= maxCount || same)
                     break;
-                ResetCenterAndWeights(cCount, paraCount, properties, data, dataCount, mean, classnumber, reCount, center, w);
+                ResetCenterAndWeights(cCount, paraCount, properties, data, dataCount, mean, classnumber, reCount,center,w);
 
-                flag = (int)flag + 1;
+                flag++;
             }
             result.Centers = center;
             result.ClassNumbers = classnumber;
@@ -440,6 +463,78 @@ namespace MPPO.DataMining
             result.cCount = cCount;
             result.CountEachCluster = reCount;
             result.Properties = properties;
+            result.LoopCount = count;
+            DateTime endtime = DateTime.Now;
+            result.CostTime = (endtime - starttime).TotalMilliseconds;
+            flag = maxCount;
+            return result;
+        }
+        public static ClusterResult SingleStart(IDataTable<DataRow> data, string[] properties, int cCount, int maxCount, double[] mean, double[] v, ref int flag)
+        {
+            DateTime starttime = DateTime.Now;
+            int paraCount = properties.Length;
+            if (data == null || properties == null || cCount < 2 || paraCount != mean.Length || paraCount != v.Length)
+                return null;
+            int dataCount = data.RowCount;
+            if (paraCount == 0 || dataCount == 0)
+                return null;
+            var result = new ClusterResult();
+            double[,] center = new double[cCount, paraCount];
+            int[] classnumber = new int[dataCount];
+            double odd = 2;
+            int count = 0;
+            int[] reCount;
+            InitCenter(cCount, paraCount, properties, mean, v, odd, center, data);
+            while (true)
+            {
+                reCount = new int[cCount];
+                bool fail = false;
+                bool same = true;
+                for (int i = 0; i < dataCount; i++)
+                {
+                    double[] len = new double[cCount];
+                    int min = 0;
+                    for (int j = 0; j < cCount; j++)
+                    {
+                        for (int k = 0; k < paraCount; k++)
+                        {
+                            len[j] += Math.Pow(data[i][properties[k]].ConvertToDouble() - center[j, k], 2);
+                        }
+                        if (len[j] < len[min])
+                            min = j;
+                    }
+                    if (same && classnumber[i] != min)
+                        same = false;
+                    classnumber[i] = min;
+                    reCount[min]++;
+                }
+                for (int i = 0; i < cCount; i++)
+                {
+                    if (reCount[i] == 0)
+                    {
+                        fail = true;
+                        break;
+                    }
+                }
+                if (fail)
+                {
+                    odd = odd / 2;
+                    InitCenter(cCount, paraCount, properties, mean, v, odd, center, data);
+                    continue;
+                }
+                count++;
+                if (count >= maxCount || same)
+                    break;
+                ResetCenter(cCount, paraCount, properties, data, dataCount, mean, classnumber, reCount,center);
+
+                flag++;
+            }
+            result.Centers = center;
+            result.ClassNumbers = classnumber;
+            result.cCount = cCount;
+            result.CountEachCluster = reCount;
+            result.Properties = properties;
+            result.LoopCount = count;
             DateTime endtime = DateTime.Now;
             result.CostTime = (endtime - starttime).TotalMilliseconds;
             flag = maxCount;
@@ -476,7 +571,7 @@ namespace MPPO.DataMining
                 }
             }
         }
-        private static void ResetCenterAndWeights(int cCount, int paraCount, string[] properties, IDataTable<DataRow> data, int dataCount, double[] mean, int[] result, int[] reCount, double[,] center, double[] w)
+        private static void ResetCenterAndWeights(int cCount, int paraCount, string[] properties, IDataTable<DataRow> data, int dataCount, double[] mean, int[] result, int[] reCount,double[,] center,double[] w)
         {
             double[] d = new double[paraCount];
             double[,] newCenter = new double[cCount, paraCount];
@@ -492,7 +587,6 @@ namespace MPPO.DataMining
             double[] dn = new double[paraCount];
             double[] dw = new double[paraCount];
             double[] cj = new double[paraCount];
-            w = new double[paraCount];
             for (int i = 0; i < cCount; i++)
             {
                 int count = reCount[i];
@@ -504,7 +598,7 @@ namespace MPPO.DataMining
                     dw[j] += Math.Pow(newValue - mean[j], 2);
                 }
             }
-            for (int i = 0; i < dataCount - 1; i++)
+            for (int i = 0; i < dataCount; i++)
             {
                 int re = result[i];
                 var tempData = data[i];
@@ -517,13 +611,42 @@ namespace MPPO.DataMining
             double cjSum = 0;
             for (int i = 0; i < paraCount; i++)
             {
-                dn[i] += Math.Pow(data[dataCount - 1][properties[i]].ConvertToDouble() - newCenter[result[dataCount - 1], i], 2);
-                cj[i] = dw[i] / dn[i];
+                if (dn[i] == 0)
+                    cj[i] = 0;
+                else
+                    cj[i] = dw[i] / dn[i];
                 cjSum += cj[i];
             }
             for (int i = 0; i < paraCount; i++)
             {
-                w[i] = cj[i] / cjSum;
+                if (cjSum == 0)
+                    w[i] = 0;
+                else
+                    w[i] = cj[i] / cjSum;
+            }
+        }
+        private static void ResetCenter(int cCount, int paraCount, string[] properties, IDataTable<DataRow> data, int dataCount, double[] mean, int[] result, int[] reCount, double[,] center)
+        {
+            double[] d = new double[paraCount];
+            double[,] newCenter = new double[cCount, paraCount];
+            for (int i = 0; i < dataCount; i++)
+            {
+                var temp = data[i];
+                int re = result[i];
+                for (int j = 0; j < paraCount; j++)
+                {
+                    newCenter[re, j] += temp[properties[j]].ConvertToDouble();
+                }
+            }
+            for (int i = 0; i < cCount; i++)
+            {
+                int count = reCount[i];
+                for (int j = 0; j < paraCount; j++)
+                {
+                    newCenter[i, j] = newCenter[i, j] / count;
+                    double newValue = newCenter[i, j];
+                    center[i, j] = newValue;
+                }
             }
         }
     }

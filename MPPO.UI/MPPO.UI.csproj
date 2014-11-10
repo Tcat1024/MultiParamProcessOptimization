@@ -11,7 +11,8 @@
     <RootNamespace>MPPO.UI</RootNamespace>
     <AssemblyName>MPPO.UI</AssemblyName>
     <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
-    <TargetFrameworkProfile>Client</TargetFrameworkProfile>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
     <PublishUrl>发布\</PublishUrl>
     <Install>true</Install>
@@ -49,27 +50,61 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DevExpress.Charts.v13.2.Core, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Data.v13.2" />
-    <Reference Include="DevExpress.Images.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.Printing.v13.2.Core" />
-    <Reference Include="DevExpress.Utils.v13.2" />
-    <Reference Include="DevExpress.XtraBars.v13.2" />
-    <Reference Include="DevExpress.Sparkline.v13.2.Core" />
-    <Reference Include="DevExpress.XtraCharts.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraCharts.v13.2.Extensions, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraCharts.v13.2.UI, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraCharts.v13.2.Wizard, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraEditors.v13.2" />
-    <Reference Include="DevExpress.XtraGrid.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
-    <Reference Include="DevExpress.XtraLayout.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
-    <Reference Include="DevExpress.XtraPrinting.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Charts.v13.2.Core, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Data.v13.2">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Images.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Printing.v13.2.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Utils.v13.2">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraBars.v13.2">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.Sparkline.v13.2.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v13.2.Extensions, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v13.2.UI, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraCharts.v13.2.Wizard, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraEditors.v13.2">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraGrid.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraLayout.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraPrinting.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="DevExpress.XtraTreeList.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="SPC.Base, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Library\SPC.Base.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Design" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -98,13 +133,25 @@
     <Compile Include="ConfigForm\AttributeSelectionForm.Designer.cs">
       <DependentUpon>AttributeSelectionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConfigForm\ExDataAccessConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigForm\ExDataAccessConfigForm.Designer.cs">
+      <DependentUpon>ExDataAccessConfigForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConfigForm\KMeansForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="ConfigForm\KMeansForm.Designer.cs">
       <DependentUpon>KMeansForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="DataStructure.cs" />
+    <Compile Include="Control\LoadingControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Control\LoadingControl.Designer.cs">
+      <DependentUpon>LoadingControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Structure.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -146,8 +193,14 @@
     <EmbeddedResource Include="ConfigForm\AttributeSelectionForm.resx">
       <DependentUpon>AttributeSelectionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConfigForm\ExDataAccessConfigForm.resx">
+      <DependentUpon>ExDataAccessConfigForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConfigForm\KMeansForm.resx">
       <DependentUpon>KMeansForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Control\LoadingControl.resx">
+      <DependentUpon>LoadingControl.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
@@ -173,6 +226,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

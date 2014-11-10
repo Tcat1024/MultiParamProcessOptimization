@@ -9,7 +9,7 @@ namespace MPPO.DataProcess
 {
     public class Entropy
     {
-        public static double[] GetEntropy<T>(IList<T> data,string[] properties)
+        public static double[] GetEntropy<T>(IList<T> data, string[] properties)
         {
             if (data == null || properties == null)
                 return null;
@@ -21,14 +21,14 @@ namespace MPPO.DataProcess
             double[] result = new double[paraCount];
             List<double>[] distinct = new List<double>[paraCount];
             List<int>[] distinctCount = new List<int>[paraCount];
-            for(int i = 0;i<paraCount;i++)
+            for (int i = 0; i < paraCount; i++)
             {
                 distinct[i] = new List<double>();
                 distinctCount[i] = new List<int>();
                 for (int j = 0; j < dataCount; j++)
                 {
-                     var temp = data[j];
-                     var value = Convert.ToDouble(dataType.GetProperty(properties[i]).GetValue(temp, null));
+                    var temp = data[j];
+                    var value = Convert.ToDouble(dataType.GetProperty(properties[i]).GetValue(temp, null));
                     var index = distinct[i].IndexOf(value);
                     if (index == -1)
                     {
@@ -41,7 +41,7 @@ namespace MPPO.DataProcess
                     }
                 }
                 int disLength = distinctCount[i].Count;
-                for(int k =0;k<disLength;k++)
+                for (int k = 0; k < disLength; k++)
                 {
                     int c = distinctCount[i][k];
                     double p = (double)c / dataCount;
@@ -52,14 +52,16 @@ namespace MPPO.DataProcess
             return result;
         }
 
-        public static double[] GetEntropy(MPPO.Protocol.Interface.IDataTable<DataRow> data, string[] sparams)
+        public static double[] GetEntropy(MPPO.Protocol.Interface.IDataTable<DataRow> data, string[] sparams, Protocol.Structure.WaitObject wt)
         {
             if (data == null || sparams == null)
                 return null;
             int paraCount = sparams.Length;
-            int dataCount = data.Count();
+            int dataCount = data.RowCount;
             if (paraCount == 0 || dataCount == 0)
                 return null;
+            wt.Flags = new int[1];
+            wt.Max = paraCount * dataCount;
             double[] result = new double[paraCount];
             List<double>[] distinct = new List<double>[paraCount];
             List<int>[] distinctCount = new List<int>[paraCount];
@@ -82,6 +84,7 @@ namespace MPPO.DataProcess
                     {
                         distinctCount[i][index]++;
                     }
+                    wt.Flags[0]++;
                 }
                 int disLength = distinctCount[i].Count;
                 for (int k = 0; k < disLength; k++)

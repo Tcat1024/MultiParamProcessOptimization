@@ -24,13 +24,34 @@ namespace MPPO.UI
                 return this.View.GetDataRow(index);
             }
         }
+        public int RowCount
+        {
+            get
+            {
+                return this.View.DataRowCount;
+            }
+        }
+        public int ColumnCount
+        {
+            get
+            {
+                return this.View.VisibleColumns.Count;
+            }
+        }
+        public string Name
+        {
+            get
+            {
+                return this.sourceTable.TableName;
+            }
+            set
+            {
+                this.sourceTable.TableName = value;
+            }
+        }
         public object[] GetGroup(int index)
         {
             throw new NotImplementedException();
-        }
-        public int Count()
-        {
-            return this.View.DataRowCount;
         }
         public int GetSourceIndex(int i)
         {
@@ -106,7 +127,6 @@ namespace MPPO.UI
             return this.sourceTable.Columns.Contains(name); ;
         }
 
-
         public void AddColumn(string name)
         {
             this.sourceTable.Columns.Add(name);
@@ -118,7 +138,7 @@ namespace MPPO.UI
             this.View.Columns.AddVisible(name);
         }
 
-        public object GetDataCopy()
+        public object Copy()
         {
             DataTable result = this.sourceTable.Clone();
             result.TableName = this.sourceTable.TableName + " - 副本";
@@ -135,14 +155,6 @@ namespace MPPO.UI
                 result.Columns.RemoveAt(i);
             return result;
         }
-
-
-        public string GetTableName()
-        {
-            return this.sourceTable.TableName;
-        }
-
-
         public bool SetColumnVisible(string name)
         {
             DevExpress.XtraGrid.Columns.GridColumn target;
@@ -164,12 +176,12 @@ namespace MPPO.UI
             }
             return false;
         }
-
-
-
         public DataRow NewRow()
         {
             return this.sourceTable.NewRow();
         }
+
+
     }
+
 }

@@ -44,14 +44,17 @@
             this.barButtonItem6 = new DevExpress.XtraBars.BarButtonItem();
             this.bar2 = new DevExpress.XtraBars.Bar();
             this.menuFile = new DevExpress.XtraBars.BarSubItem();
+            this.barSubItem10 = new DevExpress.XtraBars.BarSubItem();
             this.barButtonItem13 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem36 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem14 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem17 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem20 = new DevExpress.XtraBars.BarButtonItem();
             this.btnOpenTable = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem18 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem21 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnTableSaveAs = new DevExpress.XtraBars.BarButtonItem();
             this.btnQueryDataBase = new DevExpress.XtraBars.BarButtonItem();
+            this.btnExDataAccess = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem16 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem22 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem27 = new DevExpress.XtraBars.BarButtonItem();
@@ -65,13 +68,17 @@
             this.barButtonItem31 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem32 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem33 = new DevExpress.XtraBars.BarButtonItem();
+            this.barSubItem9 = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem34 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem35 = new DevExpress.XtraBars.BarButtonItem();
             this.menuData = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonItem23 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem24 = new DevExpress.XtraBars.BarButtonItem();
-            this.barButtonItem25 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnSubsetTable = new DevExpress.XtraBars.BarButtonItem();
+            this.btnSplitTable = new DevExpress.XtraBars.BarButtonItem();
+            this.btnMergeTable = new DevExpress.XtraBars.BarButtonItem();
             this.btnCopyTable = new DevExpress.XtraBars.BarButtonItem();
             this.btnStandardData = new DevExpress.XtraBars.BarButtonItem();
             this.menuStatistics = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem38 = new DevExpress.XtraBars.BarButtonItem();
             this.menuGraph = new DevExpress.XtraBars.BarSubItem();
             this.menuDataMining = new DevExpress.XtraBars.BarSubItem();
             this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
@@ -79,6 +86,7 @@
             this.btnSchmidtSelect = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem5 = new DevExpress.XtraBars.BarSubItem();
             this.btnKMeans = new DevExpress.XtraBars.BarButtonItem();
+            this.btnKMeansImprove = new DevExpress.XtraBars.BarButtonItem();
             this.barSubItem6 = new DevExpress.XtraBars.BarSubItem();
             this.barSubItem7 = new DevExpress.XtraBars.BarSubItem();
             this.barSubItem8 = new DevExpress.XtraBars.BarSubItem();
@@ -88,9 +96,12 @@
             this.btnWindowMin = new DevExpress.XtraBars.BarButtonItem();
             this.btnWindowRecover = new DevExpress.XtraBars.BarButtonItem();
             this.menuHelp = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem37 = new DevExpress.XtraBars.BarButtonItem();
             this.bar3 = new DevExpress.XtraBars.Bar();
             this.barStaticItem1 = new DevExpress.XtraBars.BarStaticItem();
             this.stlCurrentForm = new DevExpress.XtraBars.BarStaticItem();
+            this.barStaticItem3 = new DevExpress.XtraBars.BarStaticItem();
+            this.stlFormState = new DevExpress.XtraBars.BarStaticItem();
             this.barStaticItem2 = new DevExpress.XtraBars.BarStaticItem();
             this.stlCostTime = new DevExpress.XtraBars.BarStaticItem();
             this.barDockControlTop = new DevExpress.XtraBars.BarDockControl();
@@ -148,7 +159,7 @@
             this.barSubItem8,
             this.btnEntropy,
             this.btnSchmidtSelect,
-            this.btnKMeans,
+            this.btnKMeansImprove,
             this.btnWindowCascade,
             this.btnWindowTile,
             this.btnWindowMin,
@@ -163,18 +174,17 @@
             this.barButtonItem10,
             this.barButtonItem11,
             this.barButtonItem12,
-            this.barButtonItem13,
             this.barButtonItem14,
             this.btnOpenTable,
             this.barButtonItem16,
             this.barButtonItem17,
             this.barButtonItem18,
             this.barButtonItem20,
-            this.barButtonItem21,
+            this.btnTableSaveAs,
             this.barButtonItem22,
-            this.barButtonItem23,
-            this.barButtonItem24,
-            this.barButtonItem25,
+            this.btnSubsetTable,
+            this.btnSplitTable,
+            this.btnMergeTable,
             this.btnCopyTable,
             this.barButtonItem19,
             this.barButtonItem27,
@@ -185,9 +195,21 @@
             this.barButtonItem30,
             this.barButtonItem31,
             this.barButtonItem32,
-            this.barButtonItem33});
+            this.barButtonItem33,
+            this.barSubItem9,
+            this.barButtonItem34,
+            this.barButtonItem35,
+            this.barSubItem10,
+            this.barButtonItem13,
+            this.barButtonItem36,
+            this.btnKMeans,
+            this.barButtonItem37,
+            this.barButtonItem38,
+            this.btnExDataAccess,
+            this.stlFormState,
+            this.barStaticItem3});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 84;
+            this.barManager1.MaxItemId = 98;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -305,17 +327,17 @@
             // 
             this.menuFile.Caption = "文件(&F)";
             this.menuFile.Id = 1;
-            this.menuFile.ItemShortcut = new DevExpress.XtraBars.BarShortcut(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Alt) 
-                | System.Windows.Forms.Keys.F));
+            this.menuFile.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F));
             this.menuFile.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem13),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem10, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem14, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem17),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem20),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnOpenTable, true),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem18),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem21),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnTableSaveAs),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnQueryDataBase, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnExDataAccess),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem16),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem22),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem27, true),
@@ -323,19 +345,42 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem19, true)});
             this.menuFile.Name = "menuFile";
             // 
+            // barSubItem10
+            // 
+            this.barSubItem10.Caption = "新建(&N)";
+            this.barSubItem10.Id = 89;
+            this.barSubItem10.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.N));
+            this.barSubItem10.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem13),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem36)});
+            this.barSubItem10.Name = "barSubItem10";
+            this.barSubItem10.ShortcutKeyDisplayString = " ";
+            // 
             // barButtonItem13
             // 
-            this.barButtonItem13.Caption = "新建";
+            this.barButtonItem13.Caption = "项目";
             this.barButtonItem13.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem13.Glyph")));
-            this.barButtonItem13.Id = 60;
+            this.barButtonItem13.Id = 90;
+            this.barButtonItem13.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N));
             this.barButtonItem13.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem13.LargeGlyph")));
             this.barButtonItem13.Name = "barButtonItem13";
+            // 
+            // barButtonItem36
+            // 
+            this.barButtonItem36.Caption = "工作表";
+            this.barButtonItem36.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem36.Glyph")));
+            this.barButtonItem36.Id = 91;
+            this.barButtonItem36.ItemShortcut = new DevExpress.XtraBars.BarShortcut(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+                | System.Windows.Forms.Keys.N));
+            this.barButtonItem36.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem36.LargeGlyph")));
+            this.barButtonItem36.Name = "barButtonItem36";
             // 
             // barButtonItem14
             // 
             this.barButtonItem14.Caption = "打开项目";
             this.barButtonItem14.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem14.Glyph")));
             this.barButtonItem14.Id = 61;
+            this.barButtonItem14.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O));
             this.barButtonItem14.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem14.LargeGlyph")));
             this.barButtonItem14.Name = "barButtonItem14";
             // 
@@ -344,6 +389,7 @@
             this.barButtonItem17.Caption = "保存项目";
             this.barButtonItem17.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem17.Glyph")));
             this.barButtonItem17.Id = 64;
+            this.barButtonItem17.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S));
             this.barButtonItem17.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem17.LargeGlyph")));
             this.barButtonItem17.Name = "barButtonItem17";
             // 
@@ -351,6 +397,7 @@
             // 
             this.barButtonItem20.Caption = "项目另存为";
             this.barButtonItem20.Id = 67;
+            this.barButtonItem20.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.A));
             this.barButtonItem20.Name = "barButtonItem20";
             // 
             // btnOpenTable
@@ -370,11 +417,12 @@
             this.barButtonItem18.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem18.LargeGlyph")));
             this.barButtonItem18.Name = "barButtonItem18";
             // 
-            // barButtonItem21
+            // btnTableSaveAs
             // 
-            this.barButtonItem21.Caption = "当前工作表另存为";
-            this.barButtonItem21.Id = 68;
-            this.barButtonItem21.Name = "barButtonItem21";
+            this.btnTableSaveAs.Caption = "当前工作表另存为";
+            this.btnTableSaveAs.Id = 68;
+            this.btnTableSaveAs.Name = "btnTableSaveAs";
+            this.btnTableSaveAs.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnTableSaveAs_ItemClick);
             // 
             // btnQueryDataBase
             // 
@@ -384,6 +432,13 @@
             this.btnQueryDataBase.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("btnQueryDataBase.LargeGlyph")));
             this.btnQueryDataBase.Name = "btnQueryDataBase";
             this.btnQueryDataBase.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnQueryDataBase_ItemClick);
+            // 
+            // btnExDataAccess
+            // 
+            this.btnExDataAccess.Caption = "使用外部数据接口";
+            this.btnExDataAccess.Id = 95;
+            this.btnExDataAccess.Name = "btnExDataAccess";
+            this.btnExDataAccess.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnExDataAccess_ItemClick);
             // 
             // barButtonItem16
             // 
@@ -421,6 +476,7 @@
             // 
             this.menuEdit.Caption = "编辑(&E)";
             this.menuEdit.Id = 2;
+            this.menuEdit.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.E));
             this.menuEdit.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem15),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem26),
@@ -428,19 +484,26 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem30),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem31),
             new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem32),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem33, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem33, true),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem9)});
             this.menuEdit.Name = "menuEdit";
             // 
             // barButtonItem15
             // 
             this.barButtonItem15.Caption = "撤销";
+            this.barButtonItem15.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem15.Glyph")));
             this.barButtonItem15.Id = 77;
+            this.barButtonItem15.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Z));
+            this.barButtonItem15.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem15.LargeGlyph")));
             this.barButtonItem15.Name = "barButtonItem15";
             // 
             // barButtonItem26
             // 
             this.barButtonItem26.Caption = "重做";
+            this.barButtonItem26.Glyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem26.Glyph")));
             this.barButtonItem26.Id = 78;
+            this.barButtonItem26.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Y));
+            this.barButtonItem26.LargeGlyph = ((System.Drawing.Image)(resources.GetObject("barButtonItem26.LargeGlyph")));
             this.barButtonItem26.Name = "barButtonItem26";
             // 
             // barButtonItem29
@@ -473,35 +536,61 @@
             this.barButtonItem33.Id = 83;
             this.barButtonItem33.Name = "barButtonItem33";
             // 
+            // barSubItem9
+            // 
+            this.barSubItem9.Caption = "查找和替换(&F)";
+            this.barSubItem9.Id = 86;
+            this.barSubItem9.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F));
+            this.barSubItem9.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem34),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem35)});
+            this.barSubItem9.Name = "barSubItem9";
+            this.barSubItem9.ShortcutKeyDisplayString = " ";
+            // 
+            // barButtonItem34
+            // 
+            this.barButtonItem34.Caption = "快速查找";
+            this.barButtonItem34.Id = 87;
+            this.barButtonItem34.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.F));
+            this.barButtonItem34.Name = "barButtonItem34";
+            // 
+            // barButtonItem35
+            // 
+            this.barButtonItem35.Caption = "快速替换";
+            this.barButtonItem35.Id = 88;
+            this.barButtonItem35.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.R));
+            this.barButtonItem35.Name = "barButtonItem35";
+            // 
             // menuData
             // 
             this.menuData.Caption = "数据(&A)";
             this.menuData.Id = 3;
+            this.menuData.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.A));
             this.menuData.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem23),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem24),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem25),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnSubsetTable),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnSplitTable),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnMergeTable),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnCopyTable),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnStandardData, true)});
             this.menuData.Name = "menuData";
             // 
-            // barButtonItem23
+            // btnSubsetTable
             // 
-            this.barButtonItem23.Caption = "子集化工作表";
-            this.barButtonItem23.Id = 70;
-            this.barButtonItem23.Name = "barButtonItem23";
+            this.btnSubsetTable.Caption = "子集化工作表";
+            this.btnSubsetTable.Id = 70;
+            this.btnSubsetTable.Name = "btnSubsetTable";
             // 
-            // barButtonItem24
+            // btnSplitTable
             // 
-            this.barButtonItem24.Caption = "拆分工作表";
-            this.barButtonItem24.Id = 71;
-            this.barButtonItem24.Name = "barButtonItem24";
+            this.btnSplitTable.Caption = "拆分工作表";
+            this.btnSplitTable.Id = 71;
+            this.btnSplitTable.Name = "btnSplitTable";
             // 
-            // barButtonItem25
+            // btnMergeTable
             // 
-            this.barButtonItem25.Caption = "合并工作表";
-            this.barButtonItem25.Id = 72;
-            this.barButtonItem25.Name = "barButtonItem25";
+            this.btnMergeTable.Caption = "合并工作表";
+            this.btnMergeTable.Id = 72;
+            this.btnMergeTable.Name = "btnMergeTable";
             // 
             // btnCopyTable
             // 
@@ -521,18 +610,29 @@
             // 
             this.menuStatistics.Caption = "统计(&S)";
             this.menuStatistics.Id = 4;
+            this.menuStatistics.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S));
+            this.menuStatistics.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem38)});
             this.menuStatistics.Name = "menuStatistics";
+            // 
+            // barButtonItem38
+            // 
+            this.barButtonItem38.Caption = "barButtonItem38";
+            this.barButtonItem38.Id = 94;
+            this.barButtonItem38.Name = "barButtonItem38";
             // 
             // menuGraph
             // 
             this.menuGraph.Caption = "图形(&G)";
             this.menuGraph.Id = 5;
+            this.menuGraph.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.G));
             this.menuGraph.Name = "menuGraph";
             // 
             // menuDataMining
             // 
             this.menuDataMining.Caption = "数据挖掘(&M)";
             this.menuDataMining.Id = 6;
+            this.menuDataMining.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.M));
             this.menuDataMining.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem4),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem5),
@@ -569,15 +669,23 @@
             this.barSubItem5.Caption = "聚类";
             this.barSubItem5.Id = 25;
             this.barSubItem5.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnKMeans)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnKMeans),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnKMeansImprove)});
             this.barSubItem5.Name = "barSubItem5";
             // 
             // btnKMeans
             // 
             this.btnKMeans.Caption = "K-Means聚类";
-            this.btnKMeans.Id = 31;
+            this.btnKMeans.Id = 92;
             this.btnKMeans.Name = "btnKMeans";
             this.btnKMeans.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnKMeans_ItemClick);
+            // 
+            // btnKMeansImprove
+            // 
+            this.btnKMeansImprove.Caption = "K-Means聚类(改进)";
+            this.btnKMeansImprove.Id = 31;
+            this.btnKMeansImprove.Name = "btnKMeansImprove";
+            this.btnKMeansImprove.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnKMeansImprove_ItemClick);
             // 
             // barSubItem6
             // 
@@ -601,6 +709,7 @@
             // 
             this.menuWindow.Caption = "窗口(&W)";
             this.menuWindow.Id = 7;
+            this.menuWindow.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.W));
             this.menuWindow.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.btnWindowCascade),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnWindowTile),
@@ -640,7 +749,16 @@
             // 
             this.menuHelp.Caption = "帮助(&H)";
             this.menuHelp.Id = 8;
+            this.menuHelp.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.H));
+            this.menuHelp.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem37)});
             this.menuHelp.Name = "menuHelp";
+            // 
+            // barButtonItem37
+            // 
+            this.barButtonItem37.Caption = "barButtonItem37";
+            this.barButtonItem37.Id = 93;
+            this.barButtonItem37.Name = "barButtonItem37";
             // 
             // bar3
             // 
@@ -652,6 +770,8 @@
             this.bar3.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
             new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem1),
             new DevExpress.XtraBars.LinkPersistInfo(this.stlCurrentForm),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem3),
+            new DevExpress.XtraBars.LinkPersistInfo(this.stlFormState),
             new DevExpress.XtraBars.LinkPersistInfo(this.barStaticItem2),
             new DevExpress.XtraBars.LinkPersistInfo(this.stlCostTime)});
             this.bar3.OptionsBar.AllowQuickCustomization = false;
@@ -673,6 +793,22 @@
             this.stlCurrentForm.Id = 40;
             this.stlCurrentForm.Name = "stlCurrentForm";
             this.stlCurrentForm.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // barStaticItem3
+            // 
+            this.barStaticItem3.Border = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.barStaticItem3.Caption = "    ";
+            this.barStaticItem3.Id = 97;
+            this.barStaticItem3.Name = "barStaticItem3";
+            this.barStaticItem3.TextAlignment = System.Drawing.StringAlignment.Near;
+            // 
+            // stlFormState
+            // 
+            this.stlFormState.Border = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
+            this.stlFormState.Caption = "准备就绪";
+            this.stlFormState.Id = 96;
+            this.stlFormState.Name = "stlFormState";
+            this.stlFormState.TextAlignment = System.Drawing.StringAlignment.Near;
             // 
             // barStaticItem2
             // 
@@ -810,7 +946,7 @@
         private DevExpress.XtraBars.BarButtonItem btnEntropy;
         private DevExpress.XtraBars.BarButtonItem btnSchmidtSelect;
         private DevExpress.XtraBars.BarSubItem barSubItem5;
-        private DevExpress.XtraBars.BarButtonItem btnKMeans;
+        private DevExpress.XtraBars.BarButtonItem btnKMeansImprove;
         private DevExpress.XtraBars.BarSubItem barSubItem6;
         private DevExpress.XtraBars.BarSubItem barSubItem7;
         private DevExpress.XtraBars.BarSubItem barSubItem8;
@@ -828,21 +964,20 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem10;
         private DevExpress.XtraBars.BarButtonItem barButtonItem11;
         private DevExpress.XtraBars.BarButtonItem barButtonItem12;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem13;
         private DevExpress.XtraBars.BarButtonItem barButtonItem14;
         private DevExpress.XtraBars.BarButtonItem barButtonItem17;
         private DevExpress.XtraBars.BarButtonItem barButtonItem20;
         private DevExpress.XtraBars.BarButtonItem btnOpenTable;
         private DevExpress.XtraBars.BarButtonItem barButtonItem18;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem21;
+        private DevExpress.XtraBars.BarButtonItem btnTableSaveAs;
         private DevExpress.XtraBars.BarButtonItem barButtonItem16;
         private DevExpress.XtraBars.BarButtonItem barButtonItem22;
         private DevExpress.XtraBars.BarButtonItem barButtonItem27;
         private DevExpress.XtraBars.BarButtonItem barButtonItem28;
         private DevExpress.XtraBars.BarButtonItem barButtonItem19;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem23;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem24;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem25;
+        private DevExpress.XtraBars.BarButtonItem btnSubsetTable;
+        private DevExpress.XtraBars.BarButtonItem btnSplitTable;
+        private DevExpress.XtraBars.BarButtonItem btnMergeTable;
         private DevExpress.XtraBars.BarButtonItem btnCopyTable;
         private DevExpress.XtraBars.BarButtonItem barButtonItem15;
         private DevExpress.XtraBars.BarButtonItem barButtonItem26;
@@ -851,5 +986,17 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem31;
         private DevExpress.XtraBars.BarButtonItem barButtonItem32;
         private DevExpress.XtraBars.BarButtonItem barButtonItem33;
+        private DevExpress.XtraBars.BarSubItem barSubItem10;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem13;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem36;
+        private DevExpress.XtraBars.BarSubItem barSubItem9;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem34;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem35;
+        private DevExpress.XtraBars.BarButtonItem btnKMeans;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem37;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem38;
+        private DevExpress.XtraBars.BarButtonItem btnExDataAccess;
+        private DevExpress.XtraBars.BarStaticItem stlFormState;
+        private DevExpress.XtraBars.BarStaticItem barStaticItem3;
     }
 }
