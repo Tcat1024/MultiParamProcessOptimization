@@ -159,7 +159,7 @@ namespace MPPO.UI.MdiForm
             int progress;
             while (true)
             {
-                Thread.Sleep(1000);
+                Thread.Sleep(500);
                 progress = 0;
                 int max = waitobject.Max;
                 int[] flags = waitobject.Flags;
@@ -187,9 +187,18 @@ namespace MPPO.UI.MdiForm
 
         private void MdiDataViewForm_FormClosing(object sender, FormClosingEventArgs e)
         {
-            if (waitThread!=null&&waitThread.ThreadState != ThreadState.Aborted)
+            AbortMethod();
+        }
+
+        private void loadingControl1_Cancel(object sender, EventArgs e)
+        {
+            AbortMethod();
+        }
+        private void AbortMethod()
+        {
+            if (waitThread != null && waitThread.ThreadState != ThreadState.Aborted)
                 waitThread.Abort();
-            if (methodThread!=null&&methodThread.ThreadState != ThreadState.Aborted)
+            if (methodThread != null && methodThread.ThreadState != ThreadState.Aborted)
                 methodThread.Abort();
             GC.Collect();
         }

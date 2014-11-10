@@ -5,3 +5,10 @@ C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Clust
 C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Cluster\obj\Debug\MPPO.DataMining.csprojResolveAssemblyReference.cache
 C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Cluster\obj\Debug\MPPO.DataMining.dll
 C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Cluster\obj\Debug\MPPO.DataMining.pdb
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.DataMining\bin\Debug\MPPO.DataMining.dll
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.DataMining\bin\Debug\MPPO.DataMining.pdb
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.DataMining\bin\Debug\MPPO.Protocol.dll
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.DataMining\bin\Debug\MPPO.Protocol.pdb
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.DataMining\obj\Debug\MPPO.DataMining.csprojResolveAssemblyReference.cache
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.DataMining\obj\Debug\MPPO.DataMining.dll
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.DataMining\obj\Debug\MPPO.DataMining.pdb

@@ -1,0 +1,13 @@
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Kernel\bin\Debug\MPPO.Kernel.dll
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Kernel\bin\Debug\MPPO.Kernel.pdb
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Kernel\bin\Debug\MPPO.DataAccess.dll
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Kernel\bin\Debug\MPPO.DataMining.dll
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Kernel\bin\Debug\MPPO.DataProcess.dll
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Kernel\bin\Debug\MPPO.Protocol.dll
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Kernel\bin\Debug\MPPO.DataAccess.pdb
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Kernel\bin\Debug\MPPO.DataMining.pdb
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Kernel\bin\Debug\MPPO.DataProcess.pdb
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Kernel\bin\Debug\MPPO.Protocol.pdb
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Kernel\obj\Debug\MPPO.Kernel.csprojResolveAssemblyReference.cache
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Kernel\obj\Debug\MPPO.Kernel.dll
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Kernel\obj\Debug\MPPO.Kernel.pdb

@@ -100,6 +100,7 @@
             this.loadingControl1.TabIndex = 1;
             this.loadingControl1.Visible = false;
             this.loadingControl1.WaitText = "Please Wait, Loading ...";
+            this.loadingControl1.Cancel += new System.EventHandler(this.loadingControl1_Cancel);
             // 
             // MdiDataViewForm
             // 

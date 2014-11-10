@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            DevExpress.XtraCharts.XYDiagram xyDiagram6 = new DevExpress.XtraCharts.XYDiagram();
-            DevExpress.XtraCharts.Series series6 = new DevExpress.XtraCharts.Series();
-            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel6 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
-            DevExpress.XtraCharts.PointOptions pointOptions6 = new DevExpress.XtraCharts.PointOptions();
+            DevExpress.XtraCharts.XYDiagram xyDiagram1 = new DevExpress.XtraCharts.XYDiagram();
+            DevExpress.XtraCharts.Series series1 = new DevExpress.XtraCharts.Series();
+            DevExpress.XtraCharts.SideBySideBarSeriesLabel sideBySideBarSeriesLabel1 = new DevExpress.XtraCharts.SideBySideBarSeriesLabel();
+            DevExpress.XtraCharts.PointOptions pointOptions1 = new DevExpress.XtraCharts.PointOptions();
             this.advChartControl1 = new SPC.Base.Control.AdvChartControl();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
@@ -40,9 +40,9 @@
             this.checkedListBoxControl1 = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             ((System.ComponentModel.ISupportInitialize)(this.advChartControl1)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(series6)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel6)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).BeginInit();
             this.panelControl1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.checkedListBoxControl1)).BeginInit();
@@ -51,17 +51,17 @@
             // advChartControl1
             // 
             this.advChartControl1.BorderOptions.Visible = false;
-            xyDiagram6.AxisX.VisibleInPanesSerializable = "-1";
-            xyDiagram6.AxisY.Visible = false;
-            xyDiagram6.AxisY.VisibleInPanesSerializable = "-1";
-            xyDiagram6.EnableAxisXScrolling = true;
-            xyDiagram6.EnableAxisXZooming = true;
-            xyDiagram6.Margins.Bottom = 0;
-            xyDiagram6.Margins.Left = 0;
-            xyDiagram6.Margins.Right = 7;
-            xyDiagram6.Margins.Top = 0;
-            xyDiagram6.Rotated = true;
-            this.advChartControl1.Diagram = xyDiagram6;
+            xyDiagram1.AxisX.VisibleInPanesSerializable = "-1";
+            xyDiagram1.AxisY.Visible = false;
+            xyDiagram1.AxisY.VisibleInPanesSerializable = "-1";
+            xyDiagram1.EnableAxisXScrolling = true;
+            xyDiagram1.EnableAxisXZooming = true;
+            xyDiagram1.Margins.Bottom = 0;
+            xyDiagram1.Margins.Left = 0;
+            xyDiagram1.Margins.Right = 7;
+            xyDiagram1.Margins.Top = 0;
+            xyDiagram1.Rotated = true;
+            this.advChartControl1.Diagram = xyDiagram1;
             this.advChartControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.advChartControl1.Legend.Visible = false;
             this.advChartControl1.Location = new System.Drawing.Point(0, 0);
@@ -72,15 +72,15 @@
             this.advChartControl1.Padding.Right = 0;
             this.advChartControl1.Padding.Top = 0;
             this.advChartControl1.RuntimeHitTesting = true;
-            series6.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.Qualitative;
-            sideBySideBarSeriesLabel6.LineVisible = false;
-            pointOptions6.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.Number;
-            sideBySideBarSeriesLabel6.PointOptions = pointOptions6;
-            series6.Label = sideBySideBarSeriesLabel6;
-            series6.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;
-            series6.Name = "Series 1";
+            series1.ArgumentScaleType = DevExpress.XtraCharts.ScaleType.Qualitative;
+            sideBySideBarSeriesLabel1.LineVisible = false;
+            pointOptions1.ValueNumericOptions.Format = DevExpress.XtraCharts.NumericFormat.Number;
+            sideBySideBarSeriesLabel1.PointOptions = pointOptions1;
+            series1.Label = sideBySideBarSeriesLabel1;
+            series1.LabelsVisibility = DevExpress.Utils.DefaultBoolean.True;
+            series1.Name = "Series 1";
             this.advChartControl1.SeriesSerializable = new DevExpress.XtraCharts.Series[] {
-        series6};
+        series1};
             this.advChartControl1.Size = new System.Drawing.Size(707, 458);
             this.advChartControl1.TabIndex = 3;
             this.advChartControl1.MouseClick += new System.Windows.Forms.MouseEventHandler(this.advChartControl1_MouseClick);
@@ -140,9 +140,9 @@
             this.Name = "MdiEntropyResultForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "MdiEntropyResultForm";
-            ((System.ComponentModel.ISupportInitialize)(xyDiagram6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel6)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(series6)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(xyDiagram1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(sideBySideBarSeriesLabel1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(series1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.advChartControl1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.panelControl1)).EndInit();
             this.panelControl1.ResumeLayout(false);

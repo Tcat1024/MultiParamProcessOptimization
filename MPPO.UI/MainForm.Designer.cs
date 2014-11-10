@@ -78,7 +78,6 @@
             this.btnCopyTable = new DevExpress.XtraBars.BarButtonItem();
             this.btnStandardData = new DevExpress.XtraBars.BarButtonItem();
             this.menuStatistics = new DevExpress.XtraBars.BarSubItem();
-            this.barButtonItem38 = new DevExpress.XtraBars.BarButtonItem();
             this.menuGraph = new DevExpress.XtraBars.BarSubItem();
             this.menuDataMining = new DevExpress.XtraBars.BarSubItem();
             this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
@@ -114,6 +113,9 @@
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
+            this.menuCalculate = new DevExpress.XtraBars.BarSubItem();
+            this.barButtonItem21 = new DevExpress.XtraBars.BarButtonItem();
+            this.barButtonItem23 = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -204,12 +206,14 @@
             this.barButtonItem36,
             this.btnKMeans,
             this.barButtonItem37,
-            this.barButtonItem38,
             this.btnExDataAccess,
             this.stlFormState,
-            this.barStaticItem3});
+            this.barStaticItem3,
+            this.menuCalculate,
+            this.barButtonItem21,
+            this.barButtonItem23});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 98;
+            this.barManager1.MaxItemId = 102;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -313,6 +317,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.menuFile),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuEdit),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuData),
+            new DevExpress.XtraBars.LinkPersistInfo(this.menuCalculate),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuStatistics),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuGraph),
             new DevExpress.XtraBars.LinkPersistInfo(this.menuDataMining),
@@ -570,8 +575,7 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSubsetTable),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnSplitTable),
             new DevExpress.XtraBars.LinkPersistInfo(this.btnMergeTable),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnCopyTable),
-            new DevExpress.XtraBars.LinkPersistInfo(this.btnStandardData, true)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnCopyTable)});
             this.menuData.Name = "menuData";
             // 
             // btnSubsetTable
@@ -611,15 +615,7 @@
             this.menuStatistics.Caption = "统计(&S)";
             this.menuStatistics.Id = 4;
             this.menuStatistics.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.S));
-            this.menuStatistics.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
-            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem38)});
             this.menuStatistics.Name = "menuStatistics";
-            // 
-            // barButtonItem38
-            // 
-            this.barButtonItem38.Caption = "barButtonItem38";
-            this.barButtonItem38.Id = 94;
-            this.barButtonItem38.Name = "barButtonItem38";
             // 
             // menuGraph
             // 
@@ -822,7 +818,7 @@
             // stlCostTime
             // 
             this.stlCostTime.Border = DevExpress.XtraEditors.Controls.BorderStyles.NoBorder;
-            this.stlCostTime.Caption = "秒";
+            this.stlCostTime.Caption = "  ";
             this.stlCostTime.Id = 47;
             this.stlCostTime.Name = "stlCostTime";
             this.stlCostTime.TextAlignment = System.Drawing.StringAlignment.Near;
@@ -892,6 +888,28 @@
             this.barButtonItem12.Caption = "图形";
             this.barButtonItem12.Id = 59;
             this.barButtonItem12.Name = "barButtonItem12";
+            // 
+            // menuCalculate
+            // 
+            this.menuCalculate.Caption = "计算(&C)";
+            this.menuCalculate.Id = 99;
+            this.menuCalculate.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem21),
+            new DevExpress.XtraBars.LinkPersistInfo(this.barButtonItem23),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnStandardData)});
+            this.menuCalculate.Name = "menuCalculate";
+            // 
+            // barButtonItem21
+            // 
+            this.barButtonItem21.Caption = "列统计量";
+            this.barButtonItem21.Id = 100;
+            this.barButtonItem21.Name = "barButtonItem21";
+            // 
+            // barButtonItem23
+            // 
+            this.barButtonItem23.Caption = "行统计量";
+            this.barButtonItem23.Id = 101;
+            this.barButtonItem23.Name = "barButtonItem23";
             // 
             // MainForm
             // 
@@ -994,9 +1012,11 @@
         private DevExpress.XtraBars.BarButtonItem barButtonItem35;
         private DevExpress.XtraBars.BarButtonItem btnKMeans;
         private DevExpress.XtraBars.BarButtonItem barButtonItem37;
-        private DevExpress.XtraBars.BarButtonItem barButtonItem38;
         private DevExpress.XtraBars.BarButtonItem btnExDataAccess;
         private DevExpress.XtraBars.BarStaticItem stlFormState;
         private DevExpress.XtraBars.BarStaticItem barStaticItem3;
+        private DevExpress.XtraBars.BarSubItem menuCalculate;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem21;
+        private DevExpress.XtraBars.BarButtonItem barButtonItem23;
     }
 }
