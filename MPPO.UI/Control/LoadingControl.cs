@@ -65,7 +65,8 @@ namespace MPPO.UI.Control
         public event EventHandler Cancel;
         private void btnCancel_Click(object sender, EventArgs e)
         {
-
+            if (Cancel != null)
+                Cancel(this,new EventArgs());
         }
     }
     public class LoadingControlDesigner : System.Windows.Forms.Design.ControlDesigner

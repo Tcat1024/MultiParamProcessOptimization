@@ -19,11 +19,15 @@ namespace MPPO.UI.ConfigForm
         public int MaxCount { get; private set; }
         public double Avg { get; private set; }
         public double Stdev { get; private set; }
-        public KMeansForm(string[] columns)
+        public int MaxThread { get; private set; }
+        public int MethodMode { get; private set; }
+        public int InitialMode { get; private set; }
+        public KMeansForm(string[] columns,int count)
         {
             InitializeComponent();
             this.originalColumns = columns;
             this.listBoxControl1.Items.AddRange(columns);
+            this.textEdit4.Text = ((int)Math.Pow(count, 0.5)).ToString();
         }
 
         private void simpleButton1_Click(object sender, EventArgs e)
@@ -80,6 +84,9 @@ namespace MPPO.UI.ConfigForm
             MaxCount = textEdit5.Text.Trim() == "" ? -1 : Convert.ToInt32(textEdit5.Text.Trim());
             Avg = textEdit1.Text.Trim() == ""|!checkEdit1.Checked ? double.NaN : Convert.ToDouble(textEdit1.Text.Trim());
             Stdev = textEdit2.Text.Trim() == "" | !checkEdit2.Checked ? double.NaN : Convert.ToDouble(textEdit2.Text.Trim());
+            MaxThread = textEdit6.Text.Trim() == "" ? 15 : Convert.ToInt32(textEdit6.Text.Trim());
+            InitialMode = comboBoxEdit1.SelectedIndex;
+            MethodMode = comboBoxEdit2.SelectedIndex;
             this.DialogResult = System.Windows.Forms.DialogResult.OK;
         }
 

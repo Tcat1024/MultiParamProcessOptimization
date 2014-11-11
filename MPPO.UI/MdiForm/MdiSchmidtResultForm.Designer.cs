@@ -28,10 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.panelControl1 = new DevExpress.XtraEditors.PanelControl();
             this.simpleButton1 = new DevExpress.XtraEditors.SimpleButton();
-            this.toolTipController1 = new DevExpress.Utils.ToolTipController(this.components);
             this.checkedListBoxControl1 = new DevExpress.XtraEditors.CheckedListBoxControl();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.gridControl1 = new DevExpress.XtraGrid.GridControl();
@@ -63,7 +61,6 @@
             this.simpleButton1.TabIndex = 52;
             this.simpleButton1.Text = "确定";
             this.simpleButton1.ToolTip = "将上表中选中的列删除";
-            this.simpleButton1.ToolTipController = this.toolTipController1;
             this.simpleButton1.Click += new System.EventHandler(this.simpleButton1_Click);
             // 
             // checkedListBoxControl1
@@ -71,8 +68,8 @@
             this.checkedListBoxControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.checkedListBoxControl1.CheckOnClick = true;
             this.checkedListBoxControl1.Location = new System.Drawing.Point(2, 26);
-            this.checkedListBoxControl1.MultiColumn = true;
             this.checkedListBoxControl1.Name = "checkedListBoxControl1";
+            this.checkedListBoxControl1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.checkedListBoxControl1.Size = new System.Drawing.Size(163, 398);
             this.checkedListBoxControl1.TabIndex = 0;
             // 
@@ -106,8 +103,11 @@
             this.gridView1.Name = "gridView1";
             this.gridView1.OptionsBehavior.Editable = false;
             this.gridView1.OptionsBehavior.ReadOnly = true;
+            this.gridView1.OptionsSelection.MultiSelect = true;
+            this.gridView1.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
             this.gridView1.OptionsView.ColumnAutoWidth = false;
             this.gridView1.OptionsView.ShowFooter = true;
+            this.gridView1.RowCellClick += new DevExpress.XtraGrid.Views.Grid.RowCellClickEventHandler(this.gridView1_RowCellClick);
             // 
             // MdiSchmidtResultForm
             // 
@@ -134,7 +134,6 @@
         private DevExpress.XtraEditors.CheckedListBoxControl checkedListBoxControl1;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.SimpleButton simpleButton1;
-        private DevExpress.Utils.ToolTipController toolTipController1;
         private DevExpress.XtraGrid.GridControl gridControl1;
         private DevExpress.XtraGrid.Views.Grid.GridView gridView1;
 

@@ -64,6 +64,12 @@ namespace MPPO.UI.MdiForm
             MessageBox.Show("成功更改了"+i+"列");
         }
 
+        private void gridView1_RowCellClick(object sender, DevExpress.XtraGrid.Views.Grid.RowCellClickEventArgs e)
+        {
+            int index = this.checkedListBoxControl1.Items.IndexOf(e.Column.FieldName);
+            this.checkedListBoxControl1.SelectedIndex = index;
+        }
+
 
 
     }

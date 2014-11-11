@@ -10,11 +10,12 @@ namespace MPPO.Kernel.BusinessLogicOperation
 {
     public partial class DataMiningOperation
     {
-        public static DataSet KMeans(IDataTable<DataRow> data, string[] properties, int maxCount, int MinClusterCount, int MaxClusterCount, double m, double s, Protocol.Structure.WaitObject wt,int methodid)
+        public static DataSet KMeans(object threadpool,IDataTable<DataRow> data, string[] properties, int maxCount, int minClusterCount, int maxClusterCount, double m, double s, Protocol.Structure.WaitObject wt,int initialmode, int methodmode,int maxthread)
         {
-            MinClusterCount = MinClusterCount < 2 ? 2 : MinClusterCount;
-            MaxClusterCount = MaxClusterCount < 2 ? (int)Math.Pow(data.RowCount, 0.5) : MaxClusterCount;
+            minClusterCount = minClusterCount < 2 ? 2 : minClusterCount;
+            maxClusterCount = maxClusterCount < 2 ? (int)Math.Pow(data.RowCount, 0.5) : maxClusterCount;
             maxCount = maxCount < 2 ? 20 : maxCount;
+            maxthread = maxthread < 1 ? 1 : maxthread;
             int paracount = properties.Length;
             int i, j, k;
             double[] mean;
@@ -35,7 +36,8 @@ namespace MPPO.Kernel.BusinessLogicOperation
             }
             else
                 std = data.Stdev(properties, mean);
-            var clusterreport = MPPO.DataMining.KMeans.AutoParallelStart(data, properties, maxCount, MinClusterCount, MaxClusterCount, mean, std, wt, methodid);
+            var temp = new MPPO.DataMining.KMeans(threadpool,data, properties, maxCount, minClusterCount, maxClusterCount, mean, std, wt,initialmode,methodmode,maxthread);
+            var clusterreport = temp.ParallelStart();
             var report = new DataSet();
             DataTable overview = new DataTable("OverView");
             overview.Columns.Add(new DataColumn("序号", typeof(int)));

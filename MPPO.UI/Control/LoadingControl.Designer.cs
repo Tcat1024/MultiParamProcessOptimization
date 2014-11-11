@@ -74,6 +74,7 @@
             this.btnCancel.Size = new System.Drawing.Size(89, 31);
             this.btnCancel.TabIndex = 8;
             this.btnCancel.Text = "Cancel";
+            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // LoadingControl
             // 

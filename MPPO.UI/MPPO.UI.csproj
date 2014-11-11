@@ -151,6 +151,12 @@
     <Compile Include="Control\LoadingControl.Designer.cs">
       <DependentUpon>LoadingControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="MdiForm\MdiCommandForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MdiForm\MdiCommandForm.Designer.cs">
+      <DependentUpon>MdiCommandForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Structure.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -204,6 +210,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MdiForm\MdiCommandForm.resx">
+      <DependentUpon>MdiCommandForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MdiForm\MdiDataViewForm.resx">
       <DependentUpon>MdiDataViewForm.cs</DependentUpon>

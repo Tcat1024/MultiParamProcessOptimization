@@ -41,24 +41,6 @@ namespace MPPO.DataAccess
             }
             return result;
         }
-        public static void KillProcess(string ProcessName)
-        {
-            System.Diagnostics.Process myproc = new System.Diagnostics.Process();
-            try
-            {
-                foreach (System.Diagnostics.Process thisproc in System.Diagnostics.Process.GetProcessesByName(ProcessName))
-                {
-                    if (!thisproc.CloseMainWindow())
-                    {
-                        thisproc.Kill();
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                throw ex;
-            }
-        }
         public static void ExportToExcel(IDataTable<DataRow> data, string filename,Protocol.Structure.WaitObject wt)
         {
             if (data == null)
@@ -80,6 +62,8 @@ namespace MPPO.DataAccess
                 {
                     columnIndex++;
                     excel.Cells[rowIndex, columnIndex] = column;
+                    if (data.GetColumnType(column) == typeof(string))
+                        excel.get_Range(excel.Cells[rowIndex + 1, columnIndex], excel.Cells[rowNum + 1, columnIndex]).NumberFormatLocal = "@";
                 }
                 for (int i = 0; i < rowNum; i++)
                 {
@@ -88,7 +72,7 @@ namespace MPPO.DataAccess
                     for (int j = 0; j < columnNum; j++)
                     {
                         columnIndex++;
-                        excel.Cells[rowIndex, columnIndex] = data[i][columns[j]].ToString();
+                        excel.Cells[rowIndex, columnIndex] = data[i][columns[j]];
                         wt.Flags[0]++;
                     }
 

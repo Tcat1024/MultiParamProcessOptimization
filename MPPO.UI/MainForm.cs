@@ -145,7 +145,7 @@ namespace MPPO.UI
                     {
                         MdiForm.MdiEntropyResultForm resultform = new MdiForm.MdiEntropyResultForm(targetform);
                         Protocol.Structure.WaitObject wt = new Protocol.Structure.WaitObject();
-                        targetform.DoMethod("计算信息熵", () =>
+                        targetform.DoMethod("计算信息熵", (ThreadPool) =>
                         {
                             resultform.Result = Kernel.BusinessLogicOperation.DataProcessOperation.Entropy(targettable, configform.SelectedColumns, wt);
                         }, wt, () =>
@@ -180,7 +180,7 @@ namespace MPPO.UI
                     {
                         MdiForm.MdiSchmidtResultForm resultform = new MdiForm.MdiSchmidtResultForm(targetform);
                         Protocol.Structure.WaitObject wt = new Protocol.Structure.WaitObject();
-                        targetform.DoMethod("施密特正交约减", () =>
+                        targetform.DoMethod("施密特正交约减", (ThreadPool) =>
                         {
                             resultform.Result = Kernel.BusinessLogicOperation.DataProcessOperation.Schmidt(targettable, configform.SelectedColumns);
                         }, wt, () =>
@@ -228,16 +228,16 @@ namespace MPPO.UI
             {
                 var targetform = this.ActiveDataForm;
                 var targettable = targetform.GetDataTable();
-                ConfigForm.KMeansForm configform = new ConfigForm.KMeansForm(targettable.GetColumnsList(false, typeof(string), typeof(DateTime), typeof(bool)));
+                ConfigForm.KMeansForm configform = new ConfigForm.KMeansForm(targettable.GetColumnsList(false, typeof(string), typeof(DateTime), typeof(bool)), targettable.RowCount);
                 if (configform.ShowDialog() == DialogResult.OK)
                 {
                     try
                     {
                         MdiForm.MdiKMeansResultForm resultform = new MdiForm.MdiKMeansResultForm(targetform);
                         Protocol.Structure.WaitObject wt = new Protocol.Structure.WaitObject();
-                        targetform.DoMethod("K均值聚类", () =>
+                        targetform.DoMethod("K均值聚类", (ThreadPool) =>
                         {
-                            resultform.Result = Kernel.BusinessLogicOperation.DataMiningOperation.KMeans(targettable, configform.SelectedColumns, configform.MaxCount, configform.StartClustNum, configform.EndClustNum, configform.Avg, configform.Stdev, wt, 0);
+                            resultform.Result = Kernel.BusinessLogicOperation.DataMiningOperation.KMeans(ThreadPool,targettable, configform.SelectedColumns, configform.MaxCount, configform.StartClustNum, configform.EndClustNum, configform.Avg, configform.Stdev, wt, configform.InitialMode, configform.MethodMode, configform.MaxThread);
                         }, wt, () =>
                         {
                             this.Invoke(new Action(() =>
@@ -251,38 +251,6 @@ namespace MPPO.UI
                     {
                         MessageBox.Show(ex.Message);
                     }                
-                }
-            }
-        }
-        private void btnKMeansImprove_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
-        {
-            if (this.ActiveDataForm != null && !this.ActiveDataForm.IsBusy)
-            {
-                var targetform = this.ActiveDataForm;
-                var targettable = targetform.GetDataTable();
-                ConfigForm.KMeansForm configform = new ConfigForm.KMeansForm(targettable.GetColumnsList(false, typeof(string), typeof(DateTime), typeof(bool)));
-                if (configform.ShowDialog() == DialogResult.OK)
-                {
-                    try
-                    {
-                        MdiForm.MdiKMeansResultForm resultform = new MdiForm.MdiKMeansResultForm(targetform);
-                        Protocol.Structure.WaitObject wt = new Protocol.Structure.WaitObject();
-                        targetform.DoMethod("改进K均值聚类", () =>
-                        {
-                            resultform.Result = Kernel.BusinessLogicOperation.DataMiningOperation.KMeans(targettable, configform.SelectedColumns, configform.MaxCount, configform.StartClustNum, configform.EndClustNum, configform.Avg, configform.Stdev, wt, 1);
-                        }, wt, () =>
-                        {
-                            this.Invoke(new Action(() =>
-                            {
-                                resultform.ShowResult();
-                                resultform.Show();
-                            }));
-                        });
-                    }
-                    catch (Exception ex)
-                    {
-                        MessageBox.Show(ex.Message);
-                    }
                 }
             }
         }
@@ -324,7 +292,7 @@ namespace MPPO.UI
                     {
                         var targettable = targetform.GetDataTable();
                         Protocol.Structure.WaitObject wt = new Protocol.Structure.WaitObject();
-                        targetform.DoMethod("导出Excel", () =>
+                        targetform.DoMethod("导出Excel", (ThreadPool) =>
                         {
                             Kernel.BusinessLogicOperation.DataAccessOperation.ExportTableToExcel(targettable, configform.FileName, wt);
                         }, wt, () =>

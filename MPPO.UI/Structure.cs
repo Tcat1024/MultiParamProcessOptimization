@@ -182,6 +182,36 @@ namespace MPPO.UI
         }
 
 
+        private int index = -1;
+
+
+        public DataRow Current
+        {
+            get { return this.View.GetDataRow(index); }
+        }
+
+        public void Dispose()
+        {
+            index = -1 ;
+        }
+
+        object System.Collections.IEnumerator.Current
+        {
+            get { return this.View.GetDataRow(index); }
+        }
+
+        public bool MoveNext()
+        {
+            if (index == this.RowCount - 1)
+                return false;
+            index++;
+            return true;
+        }
+
+        public void Reset()
+        {
+            index = -1;
+        }
     }
 
 }

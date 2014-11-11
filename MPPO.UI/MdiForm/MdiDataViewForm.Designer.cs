@@ -85,6 +85,8 @@
             this.mainGridView.ChooseColumnName = "choose";
             this.mainGridView.GridControl = this.mainGridControl;
             this.mainGridView.Name = "mainGridView";
+            this.mainGridView.OptionsSelection.MultiSelect = true;
+            this.mainGridView.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
             this.mainGridView.OptionsView.ColumnAutoWidth = false;
             this.mainGridView.OptionsView.ShowFooter = true;
             // 

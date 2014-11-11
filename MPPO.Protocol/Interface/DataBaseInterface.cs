@@ -5,7 +5,7 @@ using System.Text;
 
 namespace MPPO.Protocol.Interface
 {
-    public interface IDataTable<T>
+    public interface IDataTable<T>:IEnumerator<T>
     {
         string Name { get; set; }
         int RowCount { get; }

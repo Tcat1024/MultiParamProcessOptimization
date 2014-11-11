@@ -114,6 +114,7 @@
             this.checkedListBoxControl1.CheckOnClick = true;
             this.checkedListBoxControl1.Location = new System.Drawing.Point(2, 26);
             this.checkedListBoxControl1.Name = "checkedListBoxControl1";
+            this.checkedListBoxControl1.SelectionMode = System.Windows.Forms.SelectionMode.MultiExtended;
             this.checkedListBoxControl1.Size = new System.Drawing.Size(163, 398);
             this.checkedListBoxControl1.TabIndex = 0;
             // 

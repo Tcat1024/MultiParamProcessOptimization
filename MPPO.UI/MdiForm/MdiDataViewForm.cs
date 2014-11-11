@@ -13,6 +13,7 @@ namespace MPPO.UI.MdiForm
 {
     public partial class MdiDataViewForm : DevExpress.XtraEditors.XtraForm, MPPO.Protocol.Interface.IMdiDataForm<DataRow>
     {
+        private List<Thread> ThreadPool = new List<Thread>();
         public MdiDataViewForm()
         {
             InitializeComponent();
@@ -171,14 +172,14 @@ namespace MPPO.UI.MdiForm
                 this.Invoke(new Action(() => { this.loadingControl1.Position = progress; }));
             }
         }
-        public void DoMethod(string methodname,Action method, Protocol.Structure.WaitObject waithandle,Action callback = null)
+        public void DoMethod(string methodname, Action<object> method, Protocol.Structure.WaitObject waithandle, Action callback = null)
         {
             this.State ="正在执行:"+methodname;
             startWait(waithandle);
-            (methodThread = new Thread(() => 
+            (methodThread = new Thread((o) => 
             {
                 DateTime start = DateTime.Now;
-                method();
+                method(this.ThreadPool);
                 this.CostTime = (DateTime.Now - start).TotalSeconds;
                 endWait(); 
                 callback();
@@ -196,10 +197,23 @@ namespace MPPO.UI.MdiForm
         }
         private void AbortMethod()
         {
-            if (waitThread != null && waitThread.ThreadState != ThreadState.Aborted)
-                waitThread.Abort();
+            lock (ThreadPool)
+            {
+                for (int i = ThreadPool.Count - 1; i >= 0; i--)
+                {
+                    if (ThreadPool[i].ThreadState != ThreadState.Aborted)
+                        ThreadPool[i].Abort();
+                    ThreadPool.RemoveAt(i);
+                }
+            }
             if (methodThread != null && methodThread.ThreadState != ThreadState.Aborted)
                 methodThread.Abort();
+            if (waitThread != null && waitThread.ThreadState != ThreadState.Aborted)
+                waitThread.Abort();
+            this.loadingControl1.Visible = false;
+            this.loadingControl1.Position = 0;
+            this.IsBusy = false;
+            this.State = "准备就绪...";
             GC.Collect();
         }
     }

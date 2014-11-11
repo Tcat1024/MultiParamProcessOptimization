@@ -26,7 +26,7 @@ namespace MPPO.Protocol.Interface
         event EventHandler StateChanged;
         IDataTable<T> GetDataTable();
         void UIInvoke(Delegate method);
-        void DoMethod(string methodname, Action method, Structure.WaitObject waithandle, Action callback = null);
+        void DoMethod(string methodname, Action<object> method, Structure.WaitObject waithandle, Action callback = null);
     }
     public interface IMdiResultForm
     {
