@@ -83,6 +83,15 @@ namespace MPPO.DataMining
             }
             return result;
         }
+        public static double GetEdistence(Protocol.Interface.IDataTable<DataRow> data,int a, int b, string[] properties, int paraCount)
+        {
+            double result = 0;
+            for (int i = 0; i < paraCount; i++)
+            {
+                result += Math.Pow(data[a,properties[i]].ConvertToDouble() - data[b,properties[i]].ConvertToDouble(), 2);
+            }
+            return result;
+        }
         public static double GetEdistence(DataRow a, double[,] b,int index, string[] properties, int paraCount)
         {
             double result = 0;

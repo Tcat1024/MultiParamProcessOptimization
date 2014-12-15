@@ -66,18 +66,18 @@ namespace MPPO.UI.MdiForm
                 {
                     if ((MessageBox.Show("原表中已有列" + column + "，是否要覆盖？", "注意", MessageBoxButtons.YesNo) == DialogResult.Yes))
                     {
-                        int rowcount = this.Result.Tables["Results"].Rows.Count;
+                        int rowcount = (this.gridView2.DataSource as DataView).Count;
                         for (int i = 0; i < rowcount; i++)
-                            datatable[i][column] = this.Result.Tables["Results"].Rows[i]["分类号"];
+                            datatable[i, column] = (this.gridView2.DataSource as DataView)[i]["类标号"];
                         datatable.SetColumnVisible(column);
                     }
                 }
                 else
                 {
                     datatable.AddColumn(column, typeof(int));
-                    int rowcount = this.Result.Tables["Results"].Rows.Count;
+                    int rowcount = (this.gridView2.DataSource as DataView).Count;
                     for (int i = 0; i < rowcount; i++)
-                        datatable[i][column] = this.Result.Tables["Results"].Rows[i]["分类号"];
+                        datatable[i, column] = (this.gridView2.DataSource as DataView)[i]["类标号"];
                 }
             }
         }

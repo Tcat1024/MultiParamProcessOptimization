@@ -35,7 +35,7 @@ namespace MPPO.Kernel.BusinessLogicOperation
                 vectors[i] = new double[rowcount];
                 for (j = 0; j < rowcount; j++)
                 {
-                    vectors[i][j] = data[j][columns[i]].ConvertToDouble();
+                    vectors[i][j] = data[j,columns[i]].ConvertToDouble();
                 }
 
             }
@@ -64,16 +64,15 @@ namespace MPPO.Kernel.BusinessLogicOperation
                 result.Add(columnname);
                 resultdetail.Columns[columnname].SetOrdinal(i);
             }
+            double total = 0;
+            double percent = 0;
+            for (j = 0; j < columncount; j++)
+            {
+                total += resultdetail.Rows[j][j].ConvertToDouble();
+            }
             for (i = 0; i < columncount; i++)
             {
-                double percent = 0;
-                for (j = 0; j < columncount; j++)
-                {
-                    percent += resultdetail.Rows[i][j].ConvertToDouble();
-                }
-                percent = (resultdetail.Rows[i][i].ConvertToDouble() * 100 / percent);
-                if (i > 0)
-                    percent = percent * (100 - percents[i - 1]) / 100 + percents[i - 1];
+                percent += (resultdetail.Rows[i][i].ConvertToDouble() * 100 / total);
                 percents.Add(percent);
             }
             percents[columncount - 1] = 100;
@@ -97,7 +96,7 @@ namespace MPPO.Kernel.BusinessLogicOperation
             for (i = 0; i < paramcount; i++)
             {
                 for (j = 0; j < datacount; j++)
-                    table[j][outputcolumns[i]] = result[j, i];
+                    table[j,outputcolumns[i]] = result[j, i];
             }
         }
     }

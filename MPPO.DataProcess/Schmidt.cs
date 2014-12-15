@@ -36,8 +36,7 @@ namespace MPPO.DataProcess
                 for (j = 0; j < surpluscount; j++)
                 {
                     int tempj = surplus[j];
-                    newV = schimidt(oldV, vectors[tempj], oldcount, oldmius, rowcount);
-
+                    newV = schimidt(vectors[tempj], oldcount, oldmius, rowcount);
                     report[i, tempj] = getAvgSc(newV, vectors, columncount, rowcount);
                     if (report[i, tempj] > max)
                     {
@@ -63,7 +62,7 @@ namespace MPPO.DataProcess
             output = output / columncount;
             return output;
         }
-        private static double[] schimidt(double[][] oldV, double[] newV, int oldcount, double[][] oldmius,int rowcount)
+        private static double[] schimidt( double[] newV, int oldcount, double[][] oldmius,int rowcount)
         {
             double[] output = new double[rowcount];
             double[] dps = new double[oldcount];
@@ -76,8 +75,9 @@ namespace MPPO.DataProcess
                 output[i] = newV[i];
                 for (int j = 0; j < oldcount; j++)
                 {
-                    output[i] -= oldmius[j][i] * dps[j];
+                    output[i] -= Math.Round(oldmius[j][i] * dps[j],10);
                 }
+                output[i] = Math.Round(output[i], 8);
             }
             return output;
         }

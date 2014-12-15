@@ -104,3 +104,4 @@ C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.UI\bi
 C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.UI\bin\Debug\ru\DevExpress.XtraTreeList.v13.2.resources.dll
 C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.UI\obj\Debug\MPPO.UI.exe
 C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.UI\obj\Debug\MPPO.UI.pdb
+C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.UI\obj\Debug\MPPO.UI.MdiForm.MdiDataSheetForm.resources

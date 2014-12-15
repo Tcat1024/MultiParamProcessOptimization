@@ -53,7 +53,7 @@ namespace MPPO.DataMining
             {
                 for (int j = i + 1; j < this.DataCount; j++)
                 {
-                    var temp = Assess.GetEdistence(this.Data[i], this.Data[j], this.Properties, this.ParaCount);
+                    var temp = Assess.GetEdistence(this.Data,i,j, this.Properties, this.ParaCount);
                     this.Distences[i, j] = temp;
                     this.Distences[j, i] = temp;
                 }
@@ -144,7 +144,7 @@ namespace MPPO.DataMining
                     {
                         for (k = 0; k < ParaCount; k++)
                         {
-                            len[j] += Math.Pow(Data[i][Properties[k]].ConvertToDouble() - center[j, k], 2);
+                            len[j] += Math.Pow(Data[i,Properties[k]].ConvertToDouble() - center[j, k], 2);
                         }
                         if (len[j] < len[min])
                             min = j;
@@ -226,7 +226,7 @@ namespace MPPO.DataMining
                     {
                         for (k = 0; k < ParaCount; k++)
                         {
-                            len[j] += w[k] * Math.Pow(Data[i][Properties[k]].ConvertToDouble() - center[j, k], 2);
+                            len[j] += w[k] * Math.Pow(Data[i,Properties[k]].ConvertToDouble() - center[j, k], 2);
                         }
                         if (len[j] < len[min])
                             min = j;
@@ -285,10 +285,9 @@ namespace MPPO.DataMining
                     index = maker.Next(DataCount);
                 } while (indexs.Contains(index));
                 indexs.Add(index);
-                var temprow = Data[index];
                 for (j = 0; j < ParaCount; j++)
                 {
-                    center[i, j] = temprow[Properties[j]].ConvertToDouble();
+                    center[i, j] = Data[index,Properties[j]].ConvertToDouble();
                 }
             }
         }
@@ -429,7 +428,7 @@ namespace MPPO.DataMining
             {
                 for (j = 0; j < ParaCount; j++)
                 {
-                    center[i, j] = Data[centers[i]][Properties[j]].ConvertToDouble();
+                    center[i, j] = Data[centers[i],Properties[j]].ConvertToDouble();
                 }
             }
         }
@@ -448,11 +447,10 @@ namespace MPPO.DataMining
             double[,] newCenter = new double[cCount, ParaCount];
             for (int i = 0; i < DataCount; i++)
             {
-                var temp = Data[i];
                 int re = classnumber[i];
                 for (int j = 0; j < ParaCount; j++)
                 {
-                    newCenter[re, j] += temp[Properties[j]].ConvertToDouble();
+                    newCenter[re, j] += Data[i,Properties[j]].ConvertToDouble();
                 }
             }
             for (int i = 0; i < cCount; i++)
@@ -472,11 +470,10 @@ namespace MPPO.DataMining
             double[,] newCenter = new double[cCount, ParaCount];
             for (int i = 0; i < DataCount; i++)
             {
-                var temp = Data[i];
                 int re = result[i];
                 for (int j = 0; j < ParaCount; j++)
                 {
-                    newCenter[re, j] += temp[Properties[j]].ConvertToDouble();
+                    newCenter[re, j] += Data[i,Properties[j]].ConvertToDouble();
                 }
             }
             double[] dn = new double[ParaCount];
@@ -497,10 +494,9 @@ namespace MPPO.DataMining
             for (int i = 0; i < DataCount; i++)
             {
                 int re = result[i];
-                var tempData = Data[i];
                 for (int j = 0; j < ParaCount; j++)
                 {
-                    dn[j] += Math.Pow(tempData[Properties[j]].ConvertToDouble() - center[re, j], 2);
+                    dn[j] += Math.Pow(Data[i,Properties[j]].ConvertToDouble() - center[re, j], 2);
                 }
             }
             double cjSum = 0;

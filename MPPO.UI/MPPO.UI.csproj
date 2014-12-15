@@ -59,9 +59,13 @@
     <Reference Include="DevExpress.Images.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
+    <Reference Include="DevExpress.Office.v13.2.Core, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.PivotGrid.v13.2.Core, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Printing.v13.2.Core">
       <Private>True</Private>
     </Reference>
+    <Reference Include="DevExpress.RichEdit.v13.2.Core, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.Spreadsheet.v13.2.Core, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
     <Reference Include="DevExpress.Utils.v13.2">
       <Private>True</Private>
     </Reference>
@@ -92,12 +96,18 @@
     <Reference Include="DevExpress.XtraLayout.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
+    <Reference Include="DevExpress.XtraNavBar.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a" />
+    <Reference Include="DevExpress.XtraPivotGrid.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraPrinting.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a">
       <Private>True</Private>
     </Reference>
+    <Reference Include="DevExpress.XtraRichEdit.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
+    <Reference Include="DevExpress.XtraSpreadsheet.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL" />
     <Reference Include="DevExpress.XtraTreeList.v13.2, Version=13.2.8.0, Culture=neutral, PublicKeyToken=b88d1754d700e49a, processorArchitecture=MSIL">
       <Private>True</Private>
     </Reference>
+    <Reference Include="Microsoft.ReportViewer.Common, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=11.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91" />
     <Reference Include="SPC.Base, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Library\SPC.Base.dll</HintPath>
@@ -105,6 +115,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -156,6 +167,12 @@
     </Compile>
     <Compile Include="MdiForm\MdiCommandForm.Designer.cs">
       <DependentUpon>MdiCommandForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MdiForm\MdiDataSheetForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MdiForm\MdiDataSheetForm.Designer.cs">
+      <DependentUpon>MdiDataSheetForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Structure.cs" />
     <Compile Include="MainForm.cs">
@@ -213,6 +230,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MdiForm\MdiCommandForm.resx">
       <DependentUpon>MdiCommandForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MdiForm\MdiDataSheetForm.resx">
+      <DependentUpon>MdiDataSheetForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MdiForm\MdiDataViewForm.resx">
       <DependentUpon>MdiDataViewForm.cs</DependentUpon>

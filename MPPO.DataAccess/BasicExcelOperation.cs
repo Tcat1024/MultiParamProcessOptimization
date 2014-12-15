@@ -72,7 +72,7 @@ namespace MPPO.DataAccess
                     for (int j = 0; j < columnNum; j++)
                     {
                         columnIndex++;
-                        excel.Cells[rowIndex, columnIndex] = data[i][columns[j]];
+                        excel.Cells[rowIndex, columnIndex] = data[i,columns[j]];
                         wt.Flags[0]++;
                     }
 

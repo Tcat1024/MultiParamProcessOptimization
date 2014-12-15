@@ -73,7 +73,7 @@ namespace MPPO.DataProcess
                 for (int j = 0; j < dataCount; j++)
                 {
                     var temp = data[j];
-                    var value = temp[sparam].ConvertToDouble();
+                    var value = data[j,sparam].ConvertToDouble();
                     var index = distinct[i].IndexOf(value);
                     if (index == -1)
                     {

@@ -11,6 +11,8 @@ namespace MPPO.Protocol.Interface
         int RowCount { get; }
         int ColumnCount { get; }
         T this[int index] { get;}
+        object this[int rowindex, int columnindex] { get; set; }
+        object this[int rowindex, string columnname] { get; set; }
         object[] GetGroup(int index);
         T NewRow();
         int GetSourceIndex(int i);

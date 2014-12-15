@@ -18,7 +18,7 @@ namespace MPPO.Protocol.Operation
             {
                 for (int j = 0; j < rowcount; j++)
                 {
-                    result[i] += data[j][selectedcolumns[i]].ConvertToDouble();
+                    result[i] += data[j,selectedcolumns[i]].ConvertToDouble();
                 }
                 result[i] = result[i] / rowcount;
             }
@@ -37,7 +37,7 @@ namespace MPPO.Protocol.Operation
             {
                 for (int j = 0; j < rowcount; j++)
                 {
-                    result[i] += Math.Pow(data[j][selectedcolumns[i]].ConvertToDouble() - avg[i], 2);
+                    result[i] += Math.Pow(data[j,selectedcolumns[i]].ConvertToDouble() - avg[i], 2);
                 }
                 result[i] = Math.Pow(result[i] / rowcount, 0.5);
             }

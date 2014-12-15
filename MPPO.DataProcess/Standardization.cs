@@ -69,8 +69,7 @@ namespace MPPO.DataProcess
                 string sparam = sparams[i];
                 for (j = 0; j < datacount; j++)
                 {
-                    var temp = data[j];
-                    sums[i] += temp[sparam].ConvertToDouble();
+                    sums[i] += data[j,sparam].ConvertToDouble();
                 }
                 avg[i] = sums[i] / datacount;
             }
@@ -79,8 +78,7 @@ namespace MPPO.DataProcess
                 string sparam = sparams[i];
                 for (j = 0; j < datacount; j++)
                 {
-                    var temp = data[j];
-                    sdv[i] += Math.Pow((temp[sparam].ConvertToDouble() - avg[i]), 2);
+                    sdv[i] += Math.Pow((data[j,sparam].ConvertToDouble() - avg[i]), 2);
                 }
                 sdv[i] = Math.Pow(sdv[i] / datacount, 0.5);
             }
@@ -89,9 +87,8 @@ namespace MPPO.DataProcess
                 string sparam = sparams[i];
                 for (j = 0; j < datacount; j++)
                 {
-                    var temp = data[j];
                     if (sdv[i] != 0)
-                        result[j, i] = (temp[sparam].ConvertToDouble() - avg[i]) / sdv[i];
+                        result[j, i] = (data[j,sparam].ConvertToDouble() - avg[i]) / sdv[i];
                     else
                         result[j, i] = 0;
                 }

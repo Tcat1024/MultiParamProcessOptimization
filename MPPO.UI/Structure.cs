@@ -15,13 +15,36 @@ namespace MPPO.UI
         {
             this.View = view;
             this.sourceTable = (view.DataSource as DataView).Table;
-            view.GridControl.Invoke(new Action(() => { this.View.ActiveFilter.Add(view.Columns[view.ChooseColumnName], new DevExpress.XtraGrid.Columns.ColumnFilterInfo(view.ChooseColumnName + " = true")); }));  
+            view.GridControl.Invoke(new Action(() => { this.View.ActiveFilter.Add(view.Columns[view.ChooseColumnName], new DevExpress.XtraGrid.Columns.ColumnFilterInfo(view.ChooseColumnName + " = true")); }));
         }
         public DataRow this[int index]
         {
             get
             {
                 return this.View.GetDataRow(index);
+            }
+        }
+        public object this[int rowindex, int columnindex]
+        {
+            get
+            {
+                return this.View.GetRowCellValue(rowindex, this.View.VisibleColumns[columnindex]);
+            }
+            set
+            {
+                this.View.SetRowCellValue(rowindex, this.View.VisibleColumns[columnindex], value);
+            }
+        }
+
+        public object this[int rowindex, string columnname]
+        {
+            get
+            {
+                return this.View.GetRowCellValue(rowindex, columnname);
+            }
+            set
+            {
+                this.View.SetRowCellValue(rowindex, columnname, value);
             }
         }
         public int RowCount
@@ -154,6 +177,14 @@ namespace MPPO.UI
             for (; i < totalcolumncount; i++)
                 result.Columns.RemoveAt(i);
             return result;
+            //object[] t = new object[3];
+            //t[0] = this.sourceTable.TableName + " - 副本";
+            //t[1] = false;
+            //string[] temp = new string[columncount];
+            //for (i = 0; i < columncount; i++)
+            //    temp[i] = View.VisibleColumns[i].FieldName;
+            //t[2] = temp;
+            //return typeof(DataView).GetMethod("ToTable", new Type[] { typeof(string), typeof(bool), typeof(string[]) }).Invoke(this.dataView, t);
         }
         public bool SetColumnVisible(string name)
         {
@@ -212,6 +243,7 @@ namespace MPPO.UI
         {
             index = -1;
         }
+
     }
 
 }

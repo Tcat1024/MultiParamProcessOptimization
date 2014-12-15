@@ -38,10 +38,8 @@ namespace MPPO.UI.ConfigForm
                     currentDomain = AppDomain.CreateDomain("temp");
                     string configfile = configform.FileName + ".config";
                     string filedic = Path.GetDirectoryName(configform.FileName);
-                    //currentDomain.SetData("PRIVATE_BINPATH",filedic);
                     var m = typeof(AppDomainSetup).GetMethod("UpdateContextProperty", BindingFlags.NonPublic | BindingFlags.Static);
                     var funsion = typeof(AppDomain).GetMethod("GetFusionContext", BindingFlags.NonPublic | BindingFlags.Instance);
-                    //m.Invoke(null, new object[] { funsion.Invoke(currentDomain, null), "PRIVATE_BINPATH", filedic });
                     if(File.Exists(configfile))
                         currentDomain.SetData("APP_CONFIG_FILE", configfile);
                     var test = currentDomain.SetupInformation;
