@@ -94,5 +94,58 @@ namespace MPPO.DataAccess
             }
 
         }
+        public static void ExportToExcel(System.Data.DataTable data, string filename, Protocol.Structure.WaitObject wt)
+        {
+            if (data == null)
+                return;
+            var excel = new ApplicationClass();
+            if (excel == null)
+                throw new Exception("Excel无法启动");
+            int rowNum = data.Rows.Count;
+            var columns = data.Columns;
+            int columnNum = columns.Count;
+            wt.Flags = new int[1];
+            wt.Max = rowNum * columnNum;
+            int rowIndex = 1;
+            int columnIndex = 0;
+            var book = excel.Application.Workbooks.Add(true);
+            try
+            {
+                foreach (DataColumn column in columns)
+                {
+                    columnIndex++;
+                    excel.Cells[rowIndex, columnIndex] = column.ColumnName;
+                    if (column.DataType == typeof(string))
+                        excel.get_Range(excel.Cells[rowIndex + 1, columnIndex], excel.Cells[rowNum + 1, columnIndex]).NumberFormatLocal = "@";
+                }
+                for (int i = 0; i < rowNum; i++)
+                {
+                    rowIndex++;
+                    columnIndex = 0;
+                    for (int j = 0; j < columnNum; j++)
+                    {
+                        columnIndex++;
+                        excel.Cells[rowIndex, columnIndex] = data.Rows[i][j];
+                        wt.Flags[0]++;
+                    }
+
+                }
+                excel.DisplayAlerts = false;
+                excel.AlertBeforeOverwriting = false;
+                book.SaveCopyAs(filename);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                book.Close(false);
+                book = null;
+                excel.Quit();
+                excel = null;
+            }
+
+        }
     }
 }

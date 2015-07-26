@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MdiDataViewForm));
             this.mainGridControl = new DevExpress.XtraGrid.GridControl();
             this.imageCollection1 = new DevExpress.Utils.ImageCollection(this.components);
-            this.mainGridView = new SPC.Base.Control.CanChooseDataGridView();
+            this.mainGridView = new SPC.Controls.Base.CanChooseDataGridView();
             this.loadingControl1 = new MPPO.UI.Control.LoadingControl();
             ((System.ComponentModel.ISupportInitialize)(this.mainGridControl)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.imageCollection1)).BeginInit();
@@ -85,6 +85,7 @@
             this.mainGridView.ChooseColumnName = "choose";
             this.mainGridView.GridControl = this.mainGridControl;
             this.mainGridView.Name = "mainGridView";
+            this.mainGridView.NumberDisplayFormat = "";
             this.mainGridView.OptionsSelection.MultiSelect = true;
             this.mainGridView.OptionsSelection.MultiSelectMode = DevExpress.XtraGrid.Views.Grid.GridMultiSelectMode.CellSelect;
             this.mainGridView.OptionsView.ColumnAutoWidth = false;
@@ -126,7 +127,7 @@
         #endregion
 
         private DevExpress.XtraGrid.GridControl mainGridControl;
-        private SPC.Base.Control.CanChooseDataGridView mainGridView;
+        private SPC.Controls.Base.CanChooseDataGridView mainGridView;
         private DevExpress.Utils.ImageCollection imageCollection1;
         private Control.LoadingControl loadingControl1;
     }

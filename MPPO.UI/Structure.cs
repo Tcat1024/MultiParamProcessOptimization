@@ -9,9 +9,9 @@ namespace MPPO.UI
 {
     public class ViewData:MPPO.Protocol.Interface.IDataTable<DataRow>
     {
-        SPC.Base.Control.CanChooseDataGridView View;
+        SPC.Controls.Base.CanChooseDataGridView View;
         DataTable sourceTable;
-        public ViewData(SPC.Base.Control.CanChooseDataGridView view)
+        public ViewData(SPC.Controls.Base.CanChooseDataGridView view)
         {
             this.View = view;
             this.sourceTable = (view.DataSource as DataView).Table;

@@ -264,7 +264,7 @@
             // 
             this.xtraTabPage2.Controls.Add(this.memoEdit1);
             this.xtraTabPage2.Name = "xtraTabPage2";
-            this.xtraTabPage2.Size = new System.Drawing.Size(569, 287);
+            this.xtraTabPage2.Size = new System.Drawing.Size(573, 288);
             this.xtraTabPage2.Text = "自定义查询";
             // 
             // memoEdit1
@@ -273,7 +273,7 @@
             this.memoEdit1.Location = new System.Drawing.Point(0, 0);
             this.memoEdit1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.memoEdit1.Name = "memoEdit1";
-            this.memoEdit1.Size = new System.Drawing.Size(569, 287);
+            this.memoEdit1.Size = new System.Drawing.Size(573, 288);
             this.memoEdit1.TabIndex = 1;
             this.memoEdit1.UseOptimizedRendering = true;
             // 

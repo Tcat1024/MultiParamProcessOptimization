@@ -195,7 +195,7 @@ namespace MPPO.UI.MdiForm
         {
             AbortMethod();
         }
-        private void AbortMethod()
+        public void AbortMethod()
         {
             lock (ThreadPool)
             {

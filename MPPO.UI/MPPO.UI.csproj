@@ -112,6 +112,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\..\Library\SPC.Base.dll</HintPath>
     </Reference>
+    <Reference Include="SPC.Controls">
+      <HintPath>..\..\..\Library\SPC.Controls.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Design" />
@@ -144,6 +147,12 @@
     <Compile Include="ConfigForm\AttributeSelectionForm.Designer.cs">
       <DependentUpon>AttributeSelectionForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConfigForm\DrawDataChooseForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigForm\DrawDataChooseForm.Designer.cs">
+      <DependentUpon>DrawDataChooseForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ConfigForm\ExDataAccessConfigForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -156,6 +165,12 @@
     <Compile Include="ConfigForm\KMeansForm.Designer.cs">
       <DependentUpon>KMeansForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ConfigForm\SchmidtAnalysisConfigForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ConfigForm\SchmidtAnalysisConfigForm.Designer.cs">
+      <DependentUpon>SchmidtAnalysisConfigForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Control\LoadingControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -167,6 +182,12 @@
     </Compile>
     <Compile Include="MdiForm\MdiCommandForm.Designer.cs">
       <DependentUpon>MdiCommandForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="MdiForm\MdiDataGraphForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="MdiForm\MdiDataGraphForm.Designer.cs">
+      <DependentUpon>MdiDataGraphForm.cs</DependentUpon>
     </Compile>
     <Compile Include="MdiForm\MdiDataSheetForm.cs">
       <SubType>Form</SubType>
@@ -216,11 +237,17 @@
     <EmbeddedResource Include="ConfigForm\AttributeSelectionForm.resx">
       <DependentUpon>AttributeSelectionForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="ConfigForm\DrawDataChooseForm.resx">
+      <DependentUpon>DrawDataChooseForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="ConfigForm\ExDataAccessConfigForm.resx">
       <DependentUpon>ExDataAccessConfigForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ConfigForm\KMeansForm.resx">
       <DependentUpon>KMeansForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ConfigForm\SchmidtAnalysisConfigForm.resx">
+      <DependentUpon>SchmidtAnalysisConfigForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Control\LoadingControl.resx">
       <DependentUpon>LoadingControl.cs</DependentUpon>
@@ -230,6 +257,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MdiForm\MdiCommandForm.resx">
       <DependentUpon>MdiCommandForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="MdiForm\MdiDataGraphForm.resx">
+      <DependentUpon>MdiDataGraphForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MdiForm\MdiDataSheetForm.resx">
       <DependentUpon>MdiDataSheetForm.cs</DependentUpon>

@@ -9,3 +9,10 @@ C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.DataA
 C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.DataAccess\obj\Debug\MPPO.DataAccess.csprojResolveAssemblyReference.cache
 C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.DataAccess\obj\Debug\MPPO.DataAccess.dll
 C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.DataAccess\obj\Debug\MPPO.DataAccess.pdb
+D:\mao\WorkSpace\Program\MultiParamProcessOptimization\MPPO.DataAccess\bin\Debug\MPPO.DataAccess.dll
+D:\mao\WorkSpace\Program\MultiParamProcessOptimization\MPPO.DataAccess\bin\Debug\MPPO.DataAccess.pdb
+D:\mao\WorkSpace\Program\MultiParamProcessOptimization\MPPO.DataAccess\bin\Debug\MPPO.Protocol.dll
+D:\mao\WorkSpace\Program\MultiParamProcessOptimization\MPPO.DataAccess\bin\Debug\MPPO.Protocol.pdb
+D:\mao\WorkSpace\Program\MultiParamProcessOptimization\MPPO.DataAccess\obj\Debug\MPPO.DataAccess.csprojResolveAssemblyReference.cache
+D:\mao\WorkSpace\Program\MultiParamProcessOptimization\MPPO.DataAccess\obj\Debug\MPPO.DataAccess.dll
+D:\mao\WorkSpace\Program\MultiParamProcessOptimization\MPPO.DataAccess\obj\Debug\MPPO.DataAccess.pdb

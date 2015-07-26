@@ -33,7 +33,7 @@
             this.simpleButton2 = new DevExpress.XtraEditors.SimpleButton();
             this.labelControl1 = new DevExpress.XtraEditors.LabelControl();
             this.labelControl2 = new DevExpress.XtraEditors.LabelControl();
-            this.triStateTreeView1 = new SPC.Base.Control.TriStateTreeView();
+            this.triStateTreeView1 = new SPC.Controls.Base.TriStateTreeView();
             this.SuspendLayout();
             // 
             // simpleButton1
@@ -111,6 +111,6 @@
         private DevExpress.XtraEditors.SimpleButton simpleButton2;
         private DevExpress.XtraEditors.LabelControl labelControl1;
         private DevExpress.XtraEditors.LabelControl labelControl2;
-        private SPC.Base.Control.TriStateTreeView triStateTreeView1;
+        private SPC.Controls.Base.TriStateTreeView triStateTreeView1;
     }
 }

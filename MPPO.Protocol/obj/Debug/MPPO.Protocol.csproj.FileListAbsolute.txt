@@ -3,3 +3,8 @@ C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Proto
 C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Protocol\obj\Debug\MPPO.Protocol.dll
 C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Protocol\obj\Debug\MPPO.Protocol.pdb
 C:\Users\Tcat\Desktop\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Protocol\obj\Debug\MPPO.Protocol.csprojResolveAssemblyReference.cache
+D:\mao\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Protocol\bin\Debug\MPPO.Protocol.dll
+D:\mao\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Protocol\bin\Debug\MPPO.Protocol.pdb
+D:\mao\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Protocol\obj\Debug\MPPO.Protocol.csprojResolveAssemblyReference.cache
+D:\mao\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Protocol\obj\Debug\MPPO.Protocol.dll
+D:\mao\WorkSpace\Program\MultiParamProcessOptimization\MPPO.Protocol\obj\Debug\MPPO.Protocol.pdb

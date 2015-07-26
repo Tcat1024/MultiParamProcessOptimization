@@ -82,6 +82,7 @@
             this.btnStandardData = new DevExpress.XtraBars.BarButtonItem();
             this.menuStatistics = new DevExpress.XtraBars.BarSubItem();
             this.menuGraph = new DevExpress.XtraBars.BarSubItem();
+            this.btnLine = new DevExpress.XtraBars.BarButtonItem();
             this.menuDataMining = new DevExpress.XtraBars.BarSubItem();
             this.barSubItem4 = new DevExpress.XtraBars.BarSubItem();
             this.btnEntropy = new DevExpress.XtraBars.BarButtonItem();
@@ -115,6 +116,7 @@
             this.barButtonItem10 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem11 = new DevExpress.XtraBars.BarButtonItem();
             this.barButtonItem12 = new DevExpress.XtraBars.BarButtonItem();
+            this.btnSchmidtAnalys = new DevExpress.XtraBars.BarButtonItem();
             ((System.ComponentModel.ISupportInitialize)(this.barManager1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -209,9 +211,11 @@
             this.barStaticItem3,
             this.menuCalculate,
             this.barButtonItem21,
-            this.barButtonItem23});
+            this.barButtonItem23,
+            this.btnLine,
+            this.btnSchmidtAnalys});
             this.barManager1.MainMenu = this.bar2;
-            this.barManager1.MaxItemId = 102;
+            this.barManager1.MaxItemId = 105;
             this.barManager1.StatusBar = this.bar3;
             // 
             // bar1
@@ -593,6 +597,7 @@
             this.btnMergeTable.Caption = "合并工作表";
             this.btnMergeTable.Id = 72;
             this.btnMergeTable.Name = "btnMergeTable";
+            this.btnMergeTable.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnMergeTable_ItemClick);
             // 
             // btnCopyTable
             // 
@@ -642,7 +647,16 @@
             this.menuGraph.Caption = "图形(&G)";
             this.menuGraph.Id = 5;
             this.menuGraph.ItemShortcut = new DevExpress.XtraBars.BarShortcut((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.G));
+            this.menuGraph.LinksPersistInfo.AddRange(new DevExpress.XtraBars.LinkPersistInfo[] {
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnLine)});
             this.menuGraph.Name = "menuGraph";
+            // 
+            // btnLine
+            // 
+            this.btnLine.Caption = "曲线图";
+            this.btnLine.Id = 103;
+            this.btnLine.Name = "btnLine";
+            this.btnLine.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnLine_ItemClick);
             // 
             // menuDataMining
             // 
@@ -654,7 +668,8 @@
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem5),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem6),
             new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem7),
-            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem8)});
+            new DevExpress.XtraBars.LinkPersistInfo(this.barSubItem8),
+            new DevExpress.XtraBars.LinkPersistInfo(this.btnSchmidtAnalys)});
             this.menuDataMining.Name = "menuDataMining";
             // 
             // barSubItem4
@@ -901,6 +916,13 @@
             this.barButtonItem12.Id = 59;
             this.barButtonItem12.Name = "barButtonItem12";
             // 
+            // btnSchmidtAnalys
+            // 
+            this.btnSchmidtAnalys.Caption = "施密特分析";
+            this.btnSchmidtAnalys.Id = 104;
+            this.btnSchmidtAnalys.Name = "btnSchmidtAnalys";
+            this.btnSchmidtAnalys.ItemClick += new DevExpress.XtraBars.ItemClickEventHandler(this.btnSchmidtAnalys_ItemClick);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 16F);
@@ -1007,5 +1029,7 @@
         private DevExpress.XtraBars.BarSubItem menuCalculate;
         private DevExpress.XtraBars.BarButtonItem barButtonItem21;
         private DevExpress.XtraBars.BarButtonItem barButtonItem23;
+        private DevExpress.XtraBars.BarButtonItem btnLine;
+        private DevExpress.XtraBars.BarButtonItem btnSchmidtAnalys;
     }
 }

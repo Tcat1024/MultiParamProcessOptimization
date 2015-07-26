@@ -27,7 +27,7 @@ namespace MPPO.UI
             }
             else if ((resultform = this.ActiveMdiChild as MPPO.Protocol.Interface.IMdiResultForm) != null)
             {
-                if (resultform.DataForm!=this.ActiveDataForm)
+                if (resultform.DataForm!= null && resultform.DataForm != this.ActiveDataForm)
                     registerDataForm(resultform.DataForm);
             }
         }
@@ -200,25 +200,30 @@ namespace MPPO.UI
             }
         }
 
+        OpenFileDialog m_dlgOpenFile = new OpenFileDialog();
         private void btnOpenTable_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
         {
-            OpenFileDialog configform = new OpenFileDialog();
-            configform.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
-            configform.Filter = "Excel 工作簿(*.xlsx)|*.xlsx|Excel 97-2003 工作簿(*.xls)|*.xls";
-            configform.FilterIndex = 1;
-            configform.RestoreDirectory = true;
-            if (configform.ShowDialog() == DialogResult.OK)
+            m_dlgOpenFile.Multiselect = true;
+            m_dlgOpenFile.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.DesktopDirectory);
+            m_dlgOpenFile.Filter = "Excel 工作簿(*.xlsx)|*.xlsx|Excel 97-2003 工作簿(*.xls)|*.xls";
+            m_dlgOpenFile.FilterIndex = 1;
+            m_dlgOpenFile.RestoreDirectory = true;
+            if (m_dlgOpenFile.ShowDialog() == DialogResult.OK)
             {
-                DataSet data = MPPO.Kernel.BusinessLogicOperation.DataAccessOperation.GetTablesFromExcel(configform.FileName);
-                foreach(DataTable table in data.Tables)
+                for (int fi = 0; fi < m_dlgOpenFile.FileNames.Length; fi++)
                 {
-                    MdiForm.MdiDataViewForm targetform = new MdiForm.MdiDataViewForm();
-                    targetform.MdiParent = this;
-                    targetform.MdiIndex = this.DataFormIndex++;
-                    targetform.DataSource = table;
-                    targetform.Caption = table.TableName;
-                    targetform.Show();
+                    DataSet data = MPPO.Kernel.BusinessLogicOperation.DataAccessOperation.GetTablesFromExcel(m_dlgOpenFile.FileNames[fi]);
+                    foreach (DataTable table in data.Tables)
+                    {
+                        MdiForm.MdiDataViewForm targetform = new MdiForm.MdiDataViewForm();
+                        targetform.MdiParent = this;
+                        targetform.MdiIndex = this.DataFormIndex++;
+                        targetform.DataSource = table;
+                        targetform.Caption = m_dlgOpenFile.SafeFileName + "_" + table.TableName;
+                        targetform.Show();
+                    }
                 }
+                
             }
         }
 
@@ -310,6 +315,93 @@ namespace MPPO.UI
                 }
             }
         }
+
+        private void btnLine_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            MPPO.UI.ConfigForm.DrawDataChooseForm configform = new ConfigForm.DrawDataChooseForm();
+            List<MPPO.Protocol.Interface.IMdiDataForm<DataRow>> forms = new List<MPPO.Protocol.Interface.IMdiDataForm<DataRow>>();
+            MPPO.Protocol.Interface.IMdiDataForm<DataRow> form;
+            int i;
+            for(i = 0;i< this.MdiChildren.Length; ++i)
+            {
+                if((form = this.MdiChildren[i] as MPPO.Protocol.Interface.IMdiDataForm<DataRow>)!= null)
+                    forms.Add(form);
+            }
+            configform.Init(forms);
+            if (configform.ShowDialog() == DialogResult.OK)
+            {
+                MPPO.UI.MdiForm.MdiDataGraphForm targetform = new MdiForm.MdiDataGraphForm();
+                targetform.MdiParent = this;
+                targetform.MdiIndex = this.DataFormIndex++;
+                var resultlist = configform.GetCheckedList();
+                for (i = 0; i < resultlist.Count; ++i)
+                {
+                    targetform.AddData(resultlist[i]);
+                }
+                targetform.Caption = "";
+                targetform.Show();
+            }
+        }
+
+        private void btnMergeTable_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+
+        }
+
+        private void btnSchmidtAnalys_ItemClick(object sender, DevExpress.XtraBars.ItemClickEventArgs e)
+        {
+            if (this.ActiveDataForm != null && !this.ActiveDataForm.IsBusy)
+            {
+                var targetform = this.ActiveDataForm;
+                var targettable = targetform.GetDataTable();
+                ConfigForm.SchmidtAnalysisConfigForm configform = new ConfigForm.SchmidtAnalysisConfigForm(targettable.Name, targettable.GetColumnsList(false, typeof(string), typeof(DateTime), typeof(bool)));
+                if (configform.ShowDialog() == DialogResult.OK)
+                {
+                    try
+                    {
+                        MdiForm.MdiDataViewForm resultform = new MdiForm.MdiDataViewForm();
+                        Protocol.Structure.WaitObject wt = new Protocol.Structure.WaitObject();
+                        targetform.DoMethod("施密特分析", (ThreadPool) =>
+                        {
+                            var result = Kernel.BusinessLogicOperation.DataProcessOperation.SchmidtAnalysis(targettable, configform.SelectedColumns, configform.AreaSize, configform.AreaSpace);
+                            if(result.Item1 != Kernel.BusinessLogicOperation.DataProcessOperation.RESULTCODE.SUCCESS)
+                            {
+                                string errormsg = "程序发生错误";
+                                switch(result.Item1)
+                                {
+                                    case Kernel.BusinessLogicOperation.DataProcessOperation.RESULTCODE.OUTOFRANGE: 
+                                        {
+                                            errormsg = "滑动区间超过数据范围";
+                                            break;
+                                        }
+                                }
+                                MessageBox.Show(errormsg);
+                                resultform.AbortMethod();
+                            }
+                            else
+                            {
+                                resultform.DataSource = result.Item2;
+                                
+                            }
+                        }, wt, () =>
+                        {
+                            this.Invoke(new Action(() =>
+                            {
+                                resultform.MdiParent = this;
+                                resultform.MdiIndex = this.DataFormIndex++;
+                                resultform.Caption = targetform.Caption + "_施密特分析结果";
+                                resultform.Show();
+                            }));
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    }
+                }
+            }
+        }
+
 
 
 

@@ -11,6 +11,12 @@ namespace MPPO.Kernel.BusinessLogicOperation
 {
     public partial class DataProcessOperation
     {
+        public enum RESULTCODE
+        {
+            OUTOFRANGE = -1,
+            SUCCESS = 0,
+        }
+
         public static List<Tuple<string, double>> Entropy(IDataTable<DataRow> data, List<string> columns, Protocol.Structure.WaitObject wt)
         {
             var result = new List<Tuple<string, double>>();
@@ -24,6 +30,52 @@ namespace MPPO.Kernel.BusinessLogicOperation
             result.Sort(new Comparison<Tuple<string, double>>((a1, a2) => { return a1.Item2.CompareTo(a2.Item2); }));
             return result;
         }
+        public static Tuple<RESULTCODE, DataTable> SchmidtAnalysis(IDataTable<DataRow> data, List<string> columns, int size, int space)
+        {
+            int columncount = columns.Count;
+            int rowcount = data.RowCount;
+            if(size > rowcount)
+            {
+                return new Tuple<RESULTCODE, DataTable>(RESULTCODE.OUTOFRANGE, null);
+            }
+            int index = 0;
+            int cursize = 0;
+            DataTable resulttable = new DataTable();
+            foreach (var column in columns)
+            {
+                resulttable.Columns.Add(column, typeof(double));
+            }
+            int i, j;
+            while(index < rowcount)
+            {
+                if (index + size <= rowcount)
+                    cursize = size;
+                else
+                    cursize = rowcount - index;
+                double[][] vectors = new double[columncount][];
+                for (i = 0; i < columncount; i++)
+                {
+                    vectors[i] = new double[size];
+                    for (j = 0; j < size; j++)
+                    {
+                        vectors[i][j] = data[index + j, columns[i]].ConvertToDouble();
+                    }
+                }
+                int[] maxid;
+                double[,] report;
+                MPPO.DataProcess.Schmidt.Start(vectors, columncount, size, out maxid, out report);
+                var temprow = resulttable.NewRow();
+                for (i = 0; i < columncount; i++)
+                {
+                    j = maxid[i];
+                    temprow[j] = report[i, j];
+                }
+                resulttable.Rows.Add(temprow);
+                index += space;
+            }
+            return new Tuple<RESULTCODE, DataTable>(RESULTCODE.SUCCESS, resulttable);
+        }
+
         public static Tuple<List<string>,List<double>,DataTable> Schmidt(IDataTable<DataRow> data, List<string> columns)
         {
             int columncount = columns.Count;
